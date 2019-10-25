@@ -55,11 +55,3 @@ test("array", () => {
     }
   });
 });
-
-test("spotify", async () => {
-  const meta = await getMetaData(
-    "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv"
-  );
-
-  expect(parseOGMeta(meta)).toMatchSnapshot();
-});

@@ -51,13 +51,3 @@ test("array", () => {
 
   expect(validateOGMeta(parsedMeta)).toMatchSnapshot();
 });
-
-test("spotify", async () => {
-  const meta = await getMetaData(
-    "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv"
-  );
-
-  const parsedMeta = parseOGMeta(meta);
-
-  expect(validateOGMeta(parsedMeta)).toMatchSnapshot();
-});
