@@ -1,0 +1,20 @@
+{
+  "name": "sharing-validator",
+  "version": "0.1.0",
+  "source": "src/index.js",
+  "main": "dist/sharing-validator.js",
+  "module": "dist/sharing-validator.mjs",
+  "scripts": {
+    "test": "jest",
+    "build": "microbundle --target node",
+    "watch": "yarn build --watch"
+  },
+  "dependencies": {
+    "htmlparser2": "^4.0.0",
+    "node-fetch": "^2.6.0",
+    "promise.any": "^2.0.0"
+  },
+  "devDependencies": {
+    "microbundle": "^0.11.0"
+  }
+}

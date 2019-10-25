@@ -1,0 +1,179 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`kaihao.dev baseline 1`] = `
+Object {
+  "facebook": Array [
+    Object {
+      "key": "og:description",
+      "valid": true,
+      "value": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+    },
+    Object {
+      "key": "og:image:width",
+      "valid": true,
+      "value": "1200",
+    },
+    Object {
+      "key": "og:image:height",
+      "valid": true,
+      "value": "626",
+    },
+  ],
+  "og": Array [
+    Object {
+      "key": "og:url",
+      "valid": true,
+      "value": "https://kaihao.dev/",
+    },
+    Object {
+      "key": "og:title",
+      "valid": true,
+      "value": "Kai Hao",
+    },
+    Object {
+      "key": "og:type",
+      "valid": true,
+      "value": "website",
+    },
+    Object {
+      "key": "og:description",
+      "valid": true,
+      "value": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+    },
+    Object {
+      "key": "og:image:url",
+      "valid": true,
+      "value": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
+    },
+    Object {
+      "key": "og:image:width",
+      "valid": true,
+      "value": "1200",
+    },
+    Object {
+      "key": "og:image:height",
+      "valid": true,
+      "value": "626",
+    },
+  ],
+  "twitter": Array [
+    Object {
+      "key": "twitter:card",
+      "valid": false,
+      "value": undefined,
+    },
+    Object {
+      "key": "twitter:site",
+      "valid": false,
+      "value": undefined,
+    },
+    Object {
+      "key": "twitter:creator",
+      "valid": false,
+      "value": undefined,
+    },
+  ],
+}
+`;
+
+exports[`kaihao.dev enable all features 1`] = `
+Object {
+  "AASA": Array [
+    Object {
+      "error": "Response status returns undefined.",
+    },
+  ],
+  "facebook": Array [
+    Object {
+      "key": "og:description",
+      "valid": true,
+      "value": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+    },
+    Object {
+      "key": "og:image:width",
+      "valid": true,
+      "value": "1200",
+    },
+    Object {
+      "key": "og:image:height",
+      "valid": true,
+      "value": "626",
+    },
+  ],
+  "facebookAppLink": Object {
+    "android": Array [
+      Object {
+        "key": "al:android:url",
+        "valid": false,
+        "value": undefined,
+      },
+    ],
+    "ios": Array [
+      Object {
+        "key": "al:ios:url",
+        "valid": false,
+        "value": undefined,
+      },
+      Object {
+        "key": "al:web:should_fallback",
+        "valid": false,
+        "value": undefined,
+      },
+    ],
+  },
+  "og": Array [
+    Object {
+      "key": "og:url",
+      "valid": true,
+      "value": "https://kaihao.dev/",
+    },
+    Object {
+      "key": "og:title",
+      "valid": true,
+      "value": "Kai Hao",
+    },
+    Object {
+      "key": "og:type",
+      "valid": true,
+      "value": "website",
+    },
+    Object {
+      "key": "og:description",
+      "valid": true,
+      "value": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+    },
+    Object {
+      "key": "og:image:url",
+      "valid": true,
+      "value": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
+    },
+    Object {
+      "key": "og:image:width",
+      "valid": true,
+      "value": "1200",
+    },
+    Object {
+      "key": "og:image:height",
+      "valid": true,
+      "value": "626",
+    },
+  ],
+  "twitter": Array [
+    Object {
+      "key": "twitter:card",
+      "valid": false,
+      "value": undefined,
+    },
+    Object {
+      "key": "twitter:site",
+      "valid": false,
+      "value": undefined,
+    },
+    Object {
+      "key": "twitter:creator",
+      "valid": false,
+      "value": undefined,
+    },
+  ],
+}
+`;

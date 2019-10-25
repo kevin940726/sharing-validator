@@ -1,0 +1,116 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`array 1`] = `
+Array [
+  Object {
+    "key": "og:type",
+    "valid": false,
+    "value": undefined,
+  },
+  Object {
+    "key": "og:image:[0]:url",
+    "valid": true,
+    "value": "http://example.com/rock.jpg",
+  },
+  Object {
+    "key": "og:image:[0]:width",
+    "valid": true,
+    "value": "300",
+  },
+  Object {
+    "key": "og:image:[0]:height",
+    "valid": true,
+    "value": "300",
+  },
+  Object {
+    "key": "og:image:[1]:url",
+    "valid": true,
+    "value": "http://example.com/rock2.jpg",
+  },
+  Object {
+    "key": "og:image:[2]:url",
+    "valid": true,
+    "value": "http://example.com/rock3.jpg",
+  },
+  Object {
+    "key": "og:image:[2]:height",
+    "valid": true,
+    "value": "1000",
+  },
+]
+`;
+
+exports[`baseline 1`] = `
+Array [
+  Object {
+    "key": "og:url",
+    "valid": true,
+    "value": "https://kaihao.dev/",
+  },
+  Object {
+    "key": "og:title",
+    "valid": true,
+    "value": "Kai Hao",
+  },
+  Object {
+    "key": "og:type",
+    "valid": true,
+    "value": "website",
+  },
+  Object {
+    "key": "og:description",
+    "valid": true,
+    "value": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+  },
+  Object {
+    "key": "og:image:url",
+    "valid": true,
+    "value": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
+  },
+  Object {
+    "key": "og:image:width",
+    "valid": true,
+    "value": "1200",
+  },
+  Object {
+    "key": "og:image:height",
+    "valid": true,
+    "value": "626",
+  },
+]
+`;
+
+exports[`spotify 1`] = `
+Array [
+  Object {
+    "key": "og:url",
+    "valid": true,
+    "value": "https://open.spotify.com/track/4u7EnebtmKWzUH433cf5Qv",
+  },
+  Object {
+    "key": "og:title",
+    "valid": true,
+    "value": "Bohemian Rhapsody - Remastered 2011",
+  },
+  Object {
+    "key": "og:type",
+    "valid": true,
+    "value": "music.song",
+  },
+  Object {
+    "key": "og:description",
+    "valid": true,
+    "value": "Bohemian Rhapsody - Remastered 2011, a song by Queen on Spotify",
+  },
+  Object {
+    "key": "og:site_name",
+    "valid": true,
+    "value": "Spotify",
+  },
+  Object {
+    "key": "og:audio:url",
+    "valid": true,
+    "value": "https://p.scdn.co/mp3-preview/d1ff0ba5c5538ca2c50b808aab2278253c98b038?cid=162b7dc01f3a4a2ca32ed3cec83d1e02",
+  },
+]
+`;
