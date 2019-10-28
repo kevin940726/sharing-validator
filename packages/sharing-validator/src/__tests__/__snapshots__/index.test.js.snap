@@ -225,7 +225,9 @@ Object {
     "AASA": Object {
       "errors": Array [
         Object {
-          "message": "Response status returns undefined.",
+          "message": "Response status returns 404 when trying to access https://kaihao.dev/apple-app-site-association,
+and returns status 404 when trying to access https://kaihao.dev/.well-known/apple-app-site-association.
+One of the above url should be set up to be accessed.",
           "property": "apple-app-site-association",
           "valid": false,
         },
