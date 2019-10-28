@@ -13,12 +13,13 @@ const cli = meow(
       --facebook  Validate Facebook meta
       --twitter  Validate Twitter meta
       --AASA  Validate apple-app-site-association file for iOS universal links
+      --assetlinks  Validate assetlinks.json for Android app links
       --facebookAppLink-ios  Validate iOS facebook app link meta
       --facebookAppLink-android  Validate Android facebook app link meta
 
     Examples
-      $ sharing-validator https://kaihao.dev
-      $ sharing-validator https://blog.example.com
+      $ sharing-validator kaihao.dev
+      $ sharing-validator blog.example.com
 `,
   {
     flags: {
@@ -63,7 +64,7 @@ if (!url) {
   console.log(chalk`
   ⚠️  You have to provide the <url>.
      Run {bold \`sharing-validator --help\`} to see the usage.
-     Or try {bold \`sharing-validator https://google.com\`}.`);
+     Or try {bold \`sharing-validator kaihao.dev\`}.`);
   process.exit(1);
 }
 
