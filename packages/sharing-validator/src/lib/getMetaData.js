@@ -15,8 +15,8 @@ async function getMetadata(url, { userAgent } = {}) {
     const htmlParser = new Parser(
       {
         onopentag(name, attrs) {
-          if (name === "meta" && attrs.property) {
-            meta.push([attrs.property, attrs.content]);
+          if (name === "meta" && (attrs.property || attrs.name)) {
+            meta.push([attrs.property || attrs.name, attrs.content]);
           }
         },
         onclosetag(name) {

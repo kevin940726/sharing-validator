@@ -41,12 +41,19 @@ const VALIDATE_PATTERNS = {
 
         let image = meta;
 
-        for (let k of imageKey) {
-          if (/[(\d+)]/.test(k)) {
-            image = image[parseInt(k.slice(1, -1), 10)];
-          } else {
-            image = image[k];
+        try {
+          for (let k of imageKey) {
+            if (/[(\d+)]/.test(k)) {
+              image = image[parseInt(k.slice(1, -1), 10)];
+            } else {
+              image = image[k];
+            }
           }
+        } catch (err) {
+          // Not specified
+          return {
+            valid: true
+          };
         }
 
         return {
