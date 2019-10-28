@@ -1,29 +1,54 @@
+import { URL } from "url";
 import getMetadata from "./lib/getMetaData";
 import parseOGMeta from "./lib/parseOGMeta";
 import validateOGMeta from "./lib/validateOGMeta";
 import validateFBMeta from "./lib/validateFBMeta";
 import validateTwitterMeta from "./lib/validateTwitterMeta";
 import validateAASA from "./lib/validateAASA";
-import validateFBAppLinkMeta from "./lib/validateFBAppLinkMeta";
+import validateAssetLinks from "./lib/validateAssetLinks";
+import {
+  validateFBAppLinkIOSMeta,
+  validateFBAppLinkAndroidMeta
+} from "./lib/validateFBAppLinkMeta";
+import USER_AGENTS from "./lib/userAgents";
 
-const socialValidator = async (
+function transformToFullURL(url) {
+  let fullURL = url;
+  try {
+    new URL(fullURL);
+  } catch (err) {
+    fullURL = `https://${fullURL}`;
+
+    try {
+      new URL(fullURL);
+    } catch (err) {
+      console.error(`Requires a valid URL, instead received ${url}`);
+    }
+  }
+
+  return fullURL;
+}
+
+const sharingValidator = async (
   url,
   {
-    og = true,
     facebook = true,
     twitter = true,
     AASA = false,
+    assetlinks = false,
     facebookAppLink = false
-  } = {}
+  } = {},
+  { userAgent = USER_AGENTS.general } = {}
 ) => {
-  const raw = await getMetadata(url);
-  const meta = parseOGMeta(raw);
+  const fullURL = transformToFullURL(url);
 
-  let results = {};
+  const rawMeta = await getMetadata(fullURL, { userAgent });
+  const meta = parseOGMeta(rawMeta);
 
-  if (og) {
-    results.og = validateOGMeta(meta);
-  }
+  const results = {};
+
+  results.og = validateOGMeta(meta);
+
   if (facebook) {
     results.facebook = validateFBMeta(meta);
   }
@@ -31,13 +56,26 @@ const socialValidator = async (
     results.twitter = validateTwitterMeta(meta);
   }
   if (AASA) {
-    results.AASA = await validateAASA(url);
+    results.AASA = await validateAASA(fullURL);
+  }
+  if (assetlinks) {
+    results.assetlinks = await validateAssetLinks(fullURL);
   }
   if (facebookAppLink) {
-    results.facebookAppLink = validateFBAppLinkMeta(meta, facebookAppLink);
+    results.facebookAppLink = {};
+
+    if (facebookAppLink.ios) {
+      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(meta);
+    }
+    if (facebookAppLink.android) {
+      results.facebookAppLink.android = validateFBAppLinkAndroidMeta(meta);
+    }
   }
 
-  return results;
+  return {
+    results,
+    meta
+  };
 };
 
-export default socialValidator;
+export default sharingValidator;

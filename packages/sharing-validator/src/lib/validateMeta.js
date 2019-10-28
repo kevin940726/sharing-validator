@@ -1,5 +1,6 @@
 function validateMeta(meta, patterns) {
-  const results = [];
+  const validations = [];
+  const errors = [];
 
   function recursiveValidate(target, pattern, parentKeys = []) {
     if (!pattern) {
@@ -26,23 +27,42 @@ function validateMeta(meta, patterns) {
         }
       }
     } else if (pattern instanceof RegExp) {
-      const valid = pattern.test(target);
+      const valid = pattern.test(target || "");
+      const property = parentKeys.join(":");
+      const message = `Expected to match ${pattern.toString()}, but received ${target}.`;
 
-      if (!valid || typeof target !== "undefined") {
-        results.push({
-          key: parentKeys.join(":"),
-          value: target,
-          valid
+      validations.push({
+        valid,
+        property,
+        content: target,
+        message
+      });
+
+      if (!valid) {
+        errors.push({
+          valid,
+          property,
+          content: target,
+          message
         });
       }
     } else if (typeof pattern === "function") {
-      const valid = pattern(target, meta);
+      const { valid, message } = pattern(target, meta, parentKeys);
+      const property = parentKeys.join(":");
 
-      if (!valid || typeof target !== "undefined") {
-        results.push({
-          key: parentKeys.join(":"),
-          value: target,
-          valid
+      validations.push({
+        valid: !!valid,
+        property,
+        content: target,
+        message
+      });
+
+      if (!valid) {
+        errors.push({
+          valid: false,
+          property,
+          content: target,
+          message
         });
       }
     } else {
@@ -52,7 +72,10 @@ function validateMeta(meta, patterns) {
 
   recursiveValidate(meta, patterns);
 
-  return results;
+  return {
+    validations,
+    errors
+  };
 }
 
 export default validateMeta;

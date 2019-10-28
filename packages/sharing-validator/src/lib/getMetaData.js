@@ -5,7 +5,7 @@ import USER_AGENTS from "./userAgents";
 async function getMetadata(url, { userAgent } = {}) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": USER_AGENTS.facebook
+      "User-Agent": USER_AGENTS.general
     }
   });
 

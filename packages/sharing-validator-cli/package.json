@@ -1,0 +1,14 @@
+{
+  "name": "sharing-validator-cli",
+  "version": "0.1.0",
+  "main": "src/index.js",
+  "scripts": {
+    "build": ":",
+    "test": ":"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "meow": "^5.0.0",
+    "sharing-validator": "^0.1.0"
+  }
+}

@@ -26,23 +26,34 @@ const VALIDATE_PATTERNS = {
     },
     description: STRING_PATTERN,
     site_name: STRING_PATTERN,
-    determiner: content => !content || /^(a|an|the|auto|)$/.test(content),
+    determiner: content => ({
+      valid: !content || /^(a|an|the|auto|)$/.test(content),
+      message: `Expected determiner to be one of (a, an, the, "", auto), received ${content}`
+    }),
     image: {
       pattern: URL_PATTERN,
       url: URL_PATTERN,
       secure_url: SECURE_URL_PATTERN,
       width: INTEGER_PATTERN,
       height: INTEGER_PATTERN,
-      alt: (content, meta) => {
-        if (meta.og && meta.og.image) {
-          if (
-            typeof meta.og.image === "string" ||
-            typeof meta.og.image.url === "string"
-          ) {
-            return STRING_PATTERN_REQUIRED.test(content);
+      alt: (content, meta, key) => {
+        const imageKey = key.slice(0, -1);
+
+        let image = meta;
+
+        for (let k of imageKey) {
+          if (/[(\d+)]/.test(k)) {
+            image = image[parseInt(k.slice(1, -1), 10)];
+          } else {
+            image = image[k];
           }
         }
-        return STRING_PATTERN(content);
+
+        return {
+          valid: !!(image.url && content),
+          message:
+            '"og:image.alt" is required when specifying "og:image" or "og:image:url"'
+        };
       }
     },
     video: {

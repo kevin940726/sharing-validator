@@ -1,81 +1,325 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`array 1`] = `
-Array [
-  Object {
-    "key": "og:type",
-    "valid": false,
-    "value": undefined,
-  },
-  Object {
-    "key": "og:image:[0]:url",
-    "valid": true,
-    "value": "http://example.com/rock.jpg",
-  },
-  Object {
-    "key": "og:image:[0]:width",
-    "valid": true,
-    "value": "300",
-  },
-  Object {
-    "key": "og:image:[0]:height",
-    "valid": true,
-    "value": "300",
-  },
-  Object {
-    "key": "og:image:[1]:url",
-    "valid": true,
-    "value": "http://example.com/rock2.jpg",
-  },
-  Object {
-    "key": "og:image:[2]:url",
-    "valid": true,
-    "value": "http://example.com/rock3.jpg",
-  },
-  Object {
-    "key": "og:image:[2]:height",
-    "valid": true,
-    "value": "1000",
-  },
-]
+Object {
+  "errors": Array [
+    Object {
+      "content": undefined,
+      "message": "Expected to match /.+/, but received undefined.",
+      "property": "og:url",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected to match /.+/, but received undefined.",
+      "property": "og:title",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received undefined.",
+      "property": "og:type",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:[0]:alt",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:[1]:alt",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:[2]:alt",
+      "valid": false,
+    },
+  ],
+  "validations": Array [
+    Object {
+      "content": undefined,
+      "message": "Expected to match /.+/, but received undefined.",
+      "property": "og:url",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected to match /.+/, but received undefined.",
+      "property": "og:title",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received undefined.",
+      "property": "og:type",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected string, received undefined.",
+      "property": "og:description",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected string, received undefined.",
+      "property": "og:site_name",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received undefined",
+      "property": "og:determiner",
+      "valid": true,
+    },
+    Object {
+      "content": "http://example.com/rock.jpg",
+      "message": "Expected url to have 'http' or 'https' protocol, received http:",
+      "property": "og:image:[0]:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:image:[0]:secure_url",
+      "valid": true,
+    },
+    Object {
+      "content": "300",
+      "message": "Expected integer, received 300",
+      "property": "og:image:[0]:width",
+      "valid": true,
+    },
+    Object {
+      "content": "300",
+      "message": "Expected integer, received 300",
+      "property": "og:image:[0]:height",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:[0]:alt",
+      "valid": false,
+    },
+    Object {
+      "content": "http://example.com/rock2.jpg",
+      "message": "Expected url to have 'http' or 'https' protocol, received http:",
+      "property": "og:image:[1]:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:image:[1]:secure_url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected integer, received undefined",
+      "property": "og:image:[1]:width",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected integer, received undefined",
+      "property": "og:image:[1]:height",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:[1]:alt",
+      "valid": false,
+    },
+    Object {
+      "content": "http://example.com/rock3.jpg",
+      "message": "Expected url to have 'http' or 'https' protocol, received http:",
+      "property": "og:image:[2]:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:image:[2]:secure_url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected integer, received undefined",
+      "property": "og:image:[2]:width",
+      "valid": true,
+    },
+    Object {
+      "content": "1000",
+      "message": "Expected integer, received 1000",
+      "property": "og:image:[2]:height",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:[2]:alt",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:video:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:video:secure_url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected integer, received undefined",
+      "property": "og:video:width",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected integer, received undefined",
+      "property": "og:video:height",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:audio:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:audio:secure_url",
+      "valid": true,
+    },
+  ],
+}
 `;
 
 exports[`baseline 1`] = `
-Array [
-  Object {
-    "key": "og:url",
-    "valid": true,
-    "value": "https://kaihao.dev/",
-  },
-  Object {
-    "key": "og:title",
-    "valid": true,
-    "value": "Kai Hao",
-  },
-  Object {
-    "key": "og:type",
-    "valid": true,
-    "value": "website",
-  },
-  Object {
-    "key": "og:description",
-    "valid": true,
-    "value": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
-  },
-  Object {
-    "key": "og:image:url",
-    "valid": true,
-    "value": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
-  },
-  Object {
-    "key": "og:image:width",
-    "valid": true,
-    "value": "1200",
-  },
-  Object {
-    "key": "og:image:height",
-    "valid": true,
-    "value": "626",
-  },
-]
+Object {
+  "errors": Array [
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:alt",
+      "valid": false,
+    },
+  ],
+  "validations": Array [
+    Object {
+      "content": "https://kaihao.dev/",
+      "message": "Expected to match /.+/, but received https://kaihao.dev/.",
+      "property": "og:url",
+      "valid": true,
+    },
+    Object {
+      "content": "Kai Hao",
+      "message": "Expected to match /.+/, but received Kai Hao.",
+      "property": "og:title",
+      "valid": true,
+    },
+    Object {
+      "content": "website",
+      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received website.",
+      "property": "og:type",
+      "valid": true,
+    },
+    Object {
+      "content": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+      "message": "Expected string, received I&#x27;m Kai Hao, a front-end developer in Taiwan..",
+      "property": "og:description",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected string, received undefined.",
+      "property": "og:site_name",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received undefined",
+      "property": "og:determiner",
+      "valid": true,
+    },
+    Object {
+      "content": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
+      "message": "Expected url to have 'http' or 'https' protocol, received https:",
+      "property": "og:image:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:image:secure_url",
+      "valid": true,
+    },
+    Object {
+      "content": "1200",
+      "message": "Expected integer, received 1200",
+      "property": "og:image:width",
+      "valid": true,
+    },
+    Object {
+      "content": "626",
+      "message": "Expected integer, received 626",
+      "property": "og:image:height",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "\\"og:image.alt\\" is required when specifying \\"og:image\\" or \\"og:image:url\\"",
+      "property": "og:image:alt",
+      "valid": false,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:video:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:video:secure_url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected integer, received undefined",
+      "property": "og:video:width",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Expected integer, received undefined",
+      "property": "og:video:height",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:audio:url",
+      "valid": true,
+    },
+    Object {
+      "content": undefined,
+      "message": "Failed to parse the url. Invalid URL",
+      "property": "og:audio:secure_url",
+      "valid": true,
+    },
+  ],
+}
 `;

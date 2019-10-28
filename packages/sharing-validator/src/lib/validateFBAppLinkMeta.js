@@ -16,6 +16,9 @@ const FB_APP_LINK_IOS_VALIDATE_PATTERNS = {
   }
 };
 
+export const validateFBAppLinkIOSMeta = meta =>
+  validateMeta(meta, FB_APP_LINK_IOS_VALIDATE_PATTERNS);
+
 const FB_APP_LINK_ANDROID_VALIDATE_PATTERNS = {
   al: {
     android: {
@@ -26,17 +29,5 @@ const FB_APP_LINK_ANDROID_VALIDATE_PATTERNS = {
   }
 };
 
-function validateFBAppLinkMeta(meta, { ios = false, android = false } = {}) {
-  const results = {};
-
-  if (ios) {
-    results.ios = validateMeta(meta, FB_APP_LINK_IOS_VALIDATE_PATTERNS);
-  }
-  if (android) {
-    results.android = validateMeta(meta, FB_APP_LINK_ANDROID_VALIDATE_PATTERNS);
-  }
-
-  return results;
-}
-
-export default validateFBAppLinkMeta;
+export const validateFBAppLinkAndroidMeta = meta =>
+  validateMeta(meta, FB_APP_LINK_ANDROID_VALIDATE_PATTERNS);

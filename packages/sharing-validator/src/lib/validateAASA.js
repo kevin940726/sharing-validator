@@ -1,38 +1,41 @@
 import fetch from "node-fetch";
 import any from "promise.any";
 import getDomain from "../utils/getDomain";
+import fetchWithErrorHandler from "../utils/fetchWithErrorHandler";
 import USER_AGENTS from "./userAgents";
 
-function fetchWithErrorHandler(url) {
-  return fetch(url, {
+function fetchWithSizeLimitAndUserAgent(url) {
+  return fetchWithErrorHandler(url, {
     headers: {
       "User-Agent": USER_AGENTS.apple
     },
     size: 128 * 1024 // Limits to 128 KB
-  }).then(res => {
-    if (res.status >= 300) {
-      return Promise.reject(res);
-    }
-    return res;
   });
 }
 
 async function validateAASA(url) {
   const domain = getDomain(url);
-  const results = [];
+  const results = {
+    errors: [
+      {
+        valid: false,
+        property: "apple-app-site-association"
+      }
+    ]
+  };
 
   let response;
   try {
     response = await any([
-      fetchWithErrorHandler(`https://${domain}/apple-app-site-association`),
-      fetchWithErrorHandler(
+      fetchWithSizeLimitAndUserAgent(
+        `https://${domain}/apple-app-site-association`
+      ),
+      fetchWithSizeLimitAndUserAgent(
         `https://${domain}/.well-known/apple-app-site-association`
       )
     ]);
   } catch (error) {
-    results.push({
-      error: `Response status returns ${error.status}.`
-    });
+    results.errors[0].message = `Response status returns ${error.status}.`;
     return results;
   }
 
@@ -41,30 +44,24 @@ async function validateAASA(url) {
   try {
     json = JSON.parse(text);
   } catch (err) {
-    results.push({
-      error: `Invalid JSON format, received:
-${text}`
-    });
+    results.errors[0].message = `Invalid JSON format, received:
+        ${text}`;
     return results;
   }
 
   if (!json.applinks) {
-    results.push({
-      error: `Response JSON doesn't have 'applinks' key`
-    });
+    results.errors[0].message = `Response JSON doesn't have 'applinks' key`;
     return results;
   }
 
   if (json.applinks.apps.length !== 0) {
-    results.push({
-      error: `Response JSON 'applinks.apps' should be an empty array, received ${JSON.stringify(
-        json.applinks.apps
-      )}`
-    });
+    results.errors[0].message = `Response JSON 'applinks.apps' should be an empty array, received ${JSON.stringify(
+      json.applinks.apps
+    )}`;
     return results;
   }
 
-  return results;
+  return { errors: [], validations: [] };
 }
 
 export default validateAASA;
