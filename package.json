@@ -9,8 +9,9 @@
     "build": "yarn workspaces run build",
     "watch": "yarn workspaces run watch",
     "test": "yarn workspaces run test",
-    "prepublish": "yarn build && yarn test",
-    "publish": "yarn workspaces run publish"
+    "preversion": "yarn build && yarn test",
+    "version": "yarn workspaces run version",
+    "postversion": "git push --tags"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
