@@ -33,10 +33,9 @@ async function validateAssetLinks(url) {
     return results;
   }
 
-  if (response.headers["content-type"] !== "application/json") {
-    results.errors[0].message = `The "assetlinks.json" file is NOT served with content-type "application/json", received ${
-      response.headers["content-type"]
-    }`;
+  const contentType = response.headers.get("content-type");
+  if (contentType.split(";")[0].trim() !== "application/json") {
+    results.errors[0].message = `The "assetlinks.json" file is NOT served with content-type "application/json", received ${contentType}`;
     return results;
   }
 
@@ -56,13 +55,15 @@ ${text}`;
   }
 
   if (
-    !json.every(statement => {
-      Object.keys(statement) === 2 &&
+    !json.every(
+      statement =>
+        Object.keys(statement).length === 2 &&
         Array.isArray(statement.relation) &&
-        typeof statement.target === "object";
-    })
+        typeof statement.target === "object"
+    )
   ) {
-    results.errors[0].message = `The file is NOT a valid statement list, see the doc for more info.`;
+    results.errors[0].message = `The file is NOT a valid statement list, see the doc for more info.
+${JSON.stringify(json, null, 2)}`;
     return results;
   }
 

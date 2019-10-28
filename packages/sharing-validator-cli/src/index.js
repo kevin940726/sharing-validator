@@ -68,6 +68,8 @@ if (!url) {
   process.exit(1);
 }
 
+let allValid = true;
+
 function logErrors(feature, errors) {
   if (!errors.length) {
     return;
@@ -82,6 +84,8 @@ function logErrors(feature, errors) {
   });
 
   console.log("");
+
+  allValid = false;
 }
 
 sharingValidator(url, options).then(({ meta, results }) => {
@@ -98,5 +102,9 @@ sharingValidator(url, options).then(({ meta, results }) => {
         }
       }
     }
+  }
+
+  if (allValid) {
+    console.log(chalk.green.bold`🎉  All pass!`);
   }
 });
