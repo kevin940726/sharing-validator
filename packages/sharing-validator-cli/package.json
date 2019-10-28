@@ -1,6 +1,6 @@
 {
   "name": "sharing-validator-cli",
-  "version": "0.1.4",
+  "version": "0.2.2",
   "bin": {
     "sharing-validator": "src/index.js",
     "sharing-validator-cli": "src/index.js"
