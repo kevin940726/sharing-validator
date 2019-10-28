@@ -69,7 +69,11 @@ if (!url) {
 }
 
 function logErrors(feature, errors) {
-  console.log(chalk`{green.bold ${feature}}`);
+  if (!errors.length) {
+    return;
+  }
+
+  console.log(chalk`{yellow.bold ${feature}}`);
 
   errors.forEach(error => {
     console.log(
