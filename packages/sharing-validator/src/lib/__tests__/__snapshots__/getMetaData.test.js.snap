@@ -3,6 +3,18 @@
 exports[`kaihao.dev 1`] = `
 Array [
   Array [
+    "viewport",
+    "width=device-width, initial-scale=1, shrink-to-fit=no",
+  ],
+  Array [
+    "generator",
+    "Gatsby 2.15.11",
+  ],
+  Array [
+    "description",
+    "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+  ],
+  Array [
     "og:url",
     "https://kaihao.dev/",
   ],
@@ -29,6 +41,30 @@ Array [
   Array [
     "og:type",
     "website",
+  ],
+  Array [
+    "twitter:card",
+    "summary_large_image",
+  ],
+  Array [
+    "twitter:creator",
+    "@kevin940726",
+  ],
+  Array [
+    "twitter:title",
+    "Kai Hao",
+  ],
+  Array [
+    "twitter:description",
+    "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+  ],
+  Array [
+    "twitter:image",
+    "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
+  ],
+  Array [
+    "theme-color",
+    "#f2994a",
   ],
 ]
 `;

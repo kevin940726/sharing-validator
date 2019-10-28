@@ -3,6 +3,8 @@
 exports[`kaihao.dev baseline 1`] = `
 Object {
   "meta": Object {
+    "description": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+    "generator": "Gatsby 2.15.11",
     "og": Object {
       "description": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
       "image": Object {
@@ -14,6 +16,15 @@ Object {
       "type": "website",
       "url": "https://kaihao.dev/",
     },
+    "theme-color": "#f2994a",
+    "twitter": Object {
+      "card": "summary_large_image",
+      "creator": "@kevin940726",
+      "description": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+      "image": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
+      "title": "Kai Hao",
+    },
+    "viewport": "width=device-width, initial-scale=1, shrink-to-fit=no",
   },
   "results": Object {
     "facebook": Object {
@@ -173,20 +184,13 @@ Object {
       ],
     },
     "twitter": Object {
-      "errors": Array [
-        Object {
-          "content": undefined,
-          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received undefined.",
-          "property": "twitter:card",
-          "valid": false,
-        },
-      ],
+      "errors": Array [],
       "validations": Array [
         Object {
-          "content": undefined,
-          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received undefined.",
+          "content": "summary_large_image",
+          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received summary_large_image.",
           "property": "twitter:card",
-          "valid": false,
+          "valid": true,
         },
         Object {
           "content": undefined,
@@ -195,8 +199,8 @@ Object {
           "valid": true,
         },
         Object {
-          "content": undefined,
-          "message": "Expected to match /^@.+$|^$/, but received undefined.",
+          "content": "@kevin940726",
+          "message": "Expected to match /^@.+$|^$/, but received @kevin940726.",
           "property": "twitter:creator",
           "valid": true,
         },
@@ -209,6 +213,8 @@ Object {
 exports[`kaihao.dev enable all features 1`] = `
 Object {
   "meta": Object {
+    "description": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+    "generator": "Gatsby 2.15.11",
     "og": Object {
       "description": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
       "image": Object {
@@ -220,6 +226,15 @@ Object {
       "type": "website",
       "url": "https://kaihao.dev/",
     },
+    "theme-color": "#f2994a",
+    "twitter": Object {
+      "card": "summary_large_image",
+      "creator": "@kevin940726",
+      "description": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
+      "image": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
+      "title": "Kai Hao",
+    },
+    "viewport": "width=device-width, initial-scale=1, shrink-to-fit=no",
   },
   "results": Object {
     "AASA": Object {
@@ -488,20 +503,13 @@ One of the above url should be set up to be accessed.",
       ],
     },
     "twitter": Object {
-      "errors": Array [
-        Object {
-          "content": undefined,
-          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received undefined.",
-          "property": "twitter:card",
-          "valid": false,
-        },
-      ],
+      "errors": Array [],
       "validations": Array [
         Object {
-          "content": undefined,
-          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received undefined.",
+          "content": "summary_large_image",
+          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received summary_large_image.",
           "property": "twitter:card",
-          "valid": false,
+          "valid": true,
         },
         Object {
           "content": undefined,
@@ -510,8 +518,8 @@ One of the above url should be set up to be accessed.",
           "valid": true,
         },
         Object {
-          "content": undefined,
-          "message": "Expected to match /^@.+$|^$/, but received undefined.",
+          "content": "@kevin940726",
+          "message": "Expected to match /^@.+$|^$/, but received @kevin940726.",
           "property": "twitter:creator",
           "valid": true,
         },
