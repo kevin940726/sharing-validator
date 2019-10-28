@@ -35,7 +35,9 @@ async function validateAASA(url) {
       )
     ]);
   } catch (error) {
-    results.errors[0].message = `Response status returns ${error.status}.`;
+    results.errors[0].message = `Response status returns ${error.errors[0].status} when trying to access https://${domain}/apple-app-site-association,
+and returns status ${error.errors[1].status} when trying to access https://${domain}/.well-known/apple-app-site-association.
+One of the above url should be set up to be accessed.`;
     return results;
   }
 

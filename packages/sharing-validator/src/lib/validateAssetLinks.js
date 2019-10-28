@@ -25,11 +25,11 @@ async function validateAssetLinks(url) {
 
   let response;
   try {
-    response = await fetchWithUserAgent(
+    response = await fetchWithUserAgentAndContentType(
       `https://${domain}/.well-known/assetlinks.json`
     );
   } catch (error) {
-    results.errors[0].message = `Response status returns ${error.status}.`;
+    results.errors[0].message = `Response status returns ${error.status} when trying to access https://${domain}/.well-known/assetlinks.json.`;
     return results;
   }
 

@@ -31,6 +31,9 @@ const cli = meow(
       AASA: {
         type: "boolean"
       },
+      assetlinks: {
+        type: "boolean"
+      },
       "facebookAppLink-ios": {
         type: "boolean"
       },
@@ -47,6 +50,7 @@ const options = {
   facebook: cli.flags.facebook,
   twitter: cli.flags.twitter,
   AASA: cli.flags.aasa,
+  assetlinks: cli.flags.assetlinks,
   facebookAppLink: {
     ios: cli.flags.facebookAppLinkIos,
     android: cli.flags.facebookAppLinkAndroid
