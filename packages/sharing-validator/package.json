@@ -8,7 +8,8 @@
   "scripts": {
     "test": "jest",
     "build": "microbundle --target node",
-    "watch": "yarn build --watch"
+    "watch": "yarn build --watch",
+    "release": "np"
   },
   "dependencies": {
     "chalk": "^2.4.2",
