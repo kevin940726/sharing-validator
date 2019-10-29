@@ -37,8 +37,8 @@ test("baseline", () => {
 // https://ogp.me/#array
 test("array", () => {
   const meta = [
-    ["og:image", "http://example.com/rock.jpg"],
     ["og:image:width", "300"],
+    ["og:image", "http://example.com/rock.jpg"],
     ["og:image:height", "300"],
     ["og:image", "http://example.com/rock2.jpg"],
     ["og:image", "http://example.com/rock3.jpg"],

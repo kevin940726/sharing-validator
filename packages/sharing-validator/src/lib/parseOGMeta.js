@@ -30,12 +30,19 @@ function parseMetaData(meta) {
     const originalValue = Array.isArray(target[lastKey])
       ? target[lastKey][0]
       : target[lastKey];
+    const lastContent = Array.isArray(target[lastKey])
+      ? target[lastKey].slice(-1)[0]
+      : target[lastKey];
 
     if (originalValue) {
       if (typeof originalValue === "string") {
         target[lastKey] = [].concat(target[lastKey], value);
       } else {
-        target[lastKey] = [].concat(target[lastKey], { url: value });
+        if (!lastContent.hasOwnProperty("url")) {
+          lastContent.url = value;
+        } else {
+          target[lastKey] = [].concat(target[lastKey], { url: value });
+        }
       }
     } else {
       target[lastKey] = value;

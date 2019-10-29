@@ -5,19 +5,19 @@ Object {
   "errors": Array [
     Object {
       "content": undefined,
-      "message": "Expected to match /.+/, but received undefined.",
+      "message": "Expected to match /.+/, but received \`undefined\`.",
       "property": "og:url",
       "valid": false,
     },
     Object {
       "content": undefined,
-      "message": "Expected to match /.+/, but received undefined.",
+      "message": "Expected to match /.+/, but received \`undefined\`.",
       "property": "og:title",
       "valid": false,
     },
     Object {
       "content": undefined,
-      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received undefined.",
+      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`undefined\`.",
       "property": "og:type",
       "valid": false,
     },
@@ -43,19 +43,19 @@ Object {
   "validations": Array [
     Object {
       "content": undefined,
-      "message": "Expected to match /.+/, but received undefined.",
+      "message": "Expected to match /.+/, but received \`undefined\`.",
       "property": "og:url",
       "valid": false,
     },
     Object {
       "content": undefined,
-      "message": "Expected to match /.+/, but received undefined.",
+      "message": "Expected to match /.+/, but received \`undefined\`.",
       "property": "og:title",
       "valid": false,
     },
     Object {
       "content": undefined,
-      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received undefined.",
+      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`undefined\`.",
       "property": "og:type",
       "valid": false,
     },
@@ -220,19 +220,19 @@ Object {
   "validations": Array [
     Object {
       "content": "https://kaihao.dev/",
-      "message": "Expected to match /.+/, but received https://kaihao.dev/.",
+      "message": "Expected to match /.+/, but received \`https://kaihao.dev/\`.",
       "property": "og:url",
       "valid": true,
     },
     Object {
       "content": "Kai Hao",
-      "message": "Expected to match /.+/, but received Kai Hao.",
+      "message": "Expected to match /.+/, but received \`Kai Hao\`.",
       "property": "og:title",
       "valid": true,
     },
     Object {
       "content": "website",
-      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received website.",
+      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`website\`.",
       "property": "og:type",
       "valid": true,
     },
