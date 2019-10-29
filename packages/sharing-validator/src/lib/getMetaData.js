@@ -2,10 +2,14 @@ import fetch from "node-fetch";
 import { Parser } from "htmlparser2";
 import USER_AGENTS from "./userAgents";
 
-async function getMetadata(url, { userAgent } = {}) {
+async function getMetadata(
+  url,
+  { userAgent = USER_AGENTS.general, headers = {} } = {}
+) {
   const response = await fetch(url, {
     headers: {
-      "User-Agent": USER_AGENTS.general
+      "User-Agent": userAgent,
+      ...headers
     }
   });
 

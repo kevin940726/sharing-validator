@@ -1,5 +1,5 @@
 import { URL } from "url";
-import getMetadata from "./lib/getMetaData";
+import getMetaData from "./lib/getMetaData";
 import parseOGMeta from "./lib/parseOGMeta";
 import validateOGMeta from "./lib/validateOGMeta";
 import validateFBMeta from "./lib/validateFBMeta";
@@ -42,7 +42,7 @@ const sharingValidator = async (
 ) => {
   const fullURL = transformToFullURL(url);
 
-  const rawMeta = await getMetadata(fullURL, { userAgent });
+  const rawMeta = await getMetaData(fullURL, { userAgent });
   const meta = parseOGMeta(rawMeta);
 
   const results = {};
@@ -63,12 +63,33 @@ const sharingValidator = async (
   }
   if (facebookAppLink) {
     results.facebookAppLink = {};
+    let facebookAppLinkMeta = meta;
+
+    if (
+      meta.og &&
+      meta.og.url &&
+      !results.og.errors.find(err => err.property === "og:url") &&
+      meta.og.url !== fullURL
+    ) {
+      const ogURL = meta.og.url;
+      const ogURLRawMeta = await getMetaData(ogURL, {
+        userAgent: USER_AGENTS.facebook,
+        headers: {
+          "Prefer-Html-Meta-Tags": "al"
+        }
+      });
+      facebookAppLinkMeta = parseOGMeta(ogURLRawMeta);
+    }
 
     if (facebookAppLink.ios) {
-      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(meta);
+      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(
+        facebookAppLinkMeta
+      );
     }
     if (facebookAppLink.android) {
-      results.facebookAppLink.android = validateFBAppLinkAndroidMeta(meta);
+      results.facebookAppLink.android = validateFBAppLinkAndroidMeta(
+        facebookAppLinkMeta
+      );
     }
   }
 
