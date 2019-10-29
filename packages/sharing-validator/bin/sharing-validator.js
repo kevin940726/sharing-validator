@@ -68,24 +68,21 @@ if (!url) {
   process.exit(1);
 }
 
-let allValid = true;
-
 function logErrors(feature, errors) {
   if (!errors.length) {
-    return;
+    console.log(
+      chalk`✔️  {yellow.bold ${feature}} {bgGreen.bold.rgb(0,0,0)  ALL PASS }`
+    );
+  } else {
+    console.log(chalk`❌  {yellow.bold ${feature}}`);
+    errors.forEach(error => {
+      console.log(
+        chalk`  {greenBright.underline "${error.property}"} - {red ${error.message}}`
+      );
+    });
   }
 
-  console.log(chalk`{yellow.bold ${feature}}`);
-
-  errors.forEach(error => {
-    console.log(
-      chalk`  ❌  {greenBright.underline ${error.property}}: {red ${error.message}}`
-    );
-  });
-
   console.log("");
-
-  allValid = false;
 }
 
 sharingValidator(url, options).then(({ meta, results }) => {
@@ -102,9 +99,5 @@ sharingValidator(url, options).then(({ meta, results }) => {
         }
       }
     }
-  }
-
-  if (allValid) {
-    console.log(chalk.green.bold`🎉  All pass!`);
   }
 });

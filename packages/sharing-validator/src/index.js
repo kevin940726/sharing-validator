@@ -49,8 +49,22 @@ const sharingValidator = async (
 
   results.og = validateOGMeta(meta);
 
+  let facebookMeta = meta;
+  if (
+    meta.og &&
+    meta.og.url &&
+    !results.og.errors.find(err => err.property === "og:url") &&
+    meta.og.url !== fullURL
+  ) {
+    const ogURL = meta.og.url;
+    const ogURLRawMeta = await getMetaData(ogURL, {
+      userAgent: USER_AGENTS.facebook
+    });
+    facebookMeta = parseOGMeta(ogURLRawMeta);
+  }
+
   if (facebook) {
-    results.facebook = validateFBMeta(meta);
+    results.facebook = validateFBMeta(facebookMeta);
   }
   if (twitter) {
     results.twitter = validateTwitterMeta(meta);
@@ -63,32 +77,13 @@ const sharingValidator = async (
   }
   if (facebookAppLink) {
     results.facebookAppLink = {};
-    let facebookAppLinkMeta = meta;
-
-    if (
-      meta.og &&
-      meta.og.url &&
-      !results.og.errors.find(err => err.property === "og:url") &&
-      meta.og.url !== fullURL
-    ) {
-      const ogURL = meta.og.url;
-      const ogURLRawMeta = await getMetaData(ogURL, {
-        userAgent: USER_AGENTS.facebook,
-        headers: {
-          "Prefer-Html-Meta-Tags": "al"
-        }
-      });
-      facebookAppLinkMeta = parseOGMeta(ogURLRawMeta);
-    }
 
     if (facebookAppLink.ios) {
-      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(
-        facebookAppLinkMeta
-      );
+      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(facebookMeta);
     }
     if (facebookAppLink.android) {
       results.facebookAppLink.android = validateFBAppLinkAndroidMeta(
-        facebookAppLinkMeta
+        facebookMeta
       );
     }
   }

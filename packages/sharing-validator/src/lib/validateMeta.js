@@ -29,7 +29,7 @@ function validateMeta(meta, patterns) {
     } else if (pattern instanceof RegExp) {
       const valid = pattern.test(target || "");
       const property = parentKeys.join(":");
-      const message = `Expected to match ${pattern.toString()}, but received ${target}.`;
+      const message = `Expected to match ${pattern.toString()}, but received \`${target}\`.`;
 
       validations.push({
         valid,
