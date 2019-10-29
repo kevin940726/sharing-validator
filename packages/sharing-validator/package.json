@@ -1,6 +1,7 @@
 {
   "name": "sharing-validator",
   "version": "0.2.3",
+  "bin": "bin/sharing-validator.js",
   "source": "src/index.js",
   "main": "dist/sharing-validator.js",
   "module": "dist/sharing-validator.mjs",
@@ -10,7 +11,9 @@
     "watch": "yarn build --watch"
   },
   "dependencies": {
+    "chalk": "^2.4.2",
     "htmlparser2": "^4.0.0",
+    "meow": "^5.0.0",
     "node-fetch": "^2.6.0",
     "promise.any": "^2.0.0"
   },
