@@ -49,7 +49,7 @@ const sharingValidator = async (
 
   results.og = validateOGMeta(meta);
 
-  let facebookMeta = meta;
+  let ogURLMeta = meta;
   if (
     meta.og &&
     meta.og.url &&
@@ -60,11 +60,11 @@ const sharingValidator = async (
     const ogURLRawMeta = await getMetaData(ogURL, {
       userAgent: USER_AGENTS.facebook
     });
-    facebookMeta = parseOGMeta(ogURLRawMeta);
+    ogURLMeta = parseOGMeta(ogURLRawMeta);
   }
 
   if (facebook) {
-    results.facebook = validateFBMeta(facebookMeta);
+    results.facebook = validateFBMeta(ogURLMeta);
   }
   if (twitter) {
     results.twitter = validateTwitterMeta(meta);
@@ -79,12 +79,10 @@ const sharingValidator = async (
     results.facebookAppLink = {};
 
     if (facebookAppLink.ios) {
-      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(facebookMeta);
+      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(ogURLMeta);
     }
     if (facebookAppLink.android) {
-      results.facebookAppLink.android = validateFBAppLinkAndroidMeta(
-        facebookMeta
-      );
+      results.facebookAppLink.android = validateFBAppLinkAndroidMeta(ogURLMeta);
     }
   }
 

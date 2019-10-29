@@ -1,7 +1,7 @@
 import validateMeta from "./validateMeta";
 import {
   STRING_PATTERN_REQUIRED,
-  INTEGER_PATTERN_REQUIRED
+  URL_PATTERN
 } from "../utils/validationPatterns";
 
 // https://developers.facebook.com/docs/sharing/best-practices
@@ -12,12 +12,30 @@ const FB_VALIDATE_PATTERNS = {
   og: {
     description: STRING_PATTERN_REQUIRED,
     image: {
-      url: STRING_PATTERN_REQUIRED,
-      width: content => ({
-        valid: parseInt(content, 10) >= 600,
-        message: `Expected "og:image:width" to be an integer >= 600, received ${content}`
-      }),
-      height: INTEGER_PATTERN_REQUIRED
+      pattern: (content, meta, key) => {
+        let imageURL;
+        let imageKey;
+
+        if (typeof meta.image === "string") {
+          imageURL = meta.image;
+          imageKey = "og:image";
+        } else if (typeof meta.image === "object") {
+          imageURL = meta.image.url;
+          imageKey = "og:image:url";
+        } else if (Array.isArray(meta.image)) {
+          imageURL = meta.image[0].url;
+          imageKey = "og:image:url";
+        }
+
+        if (!imageURL) {
+          return {
+            valid: false,
+            message: `Should at least provide either "og:image" or "og:image:url".`
+          };
+        }
+
+        return URL_PATTERN(imageURL);
+      }
     }
   }
 };

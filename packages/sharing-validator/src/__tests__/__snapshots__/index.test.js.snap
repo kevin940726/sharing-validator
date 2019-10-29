@@ -49,24 +49,6 @@ Object {
           "property": "og:description",
           "valid": true,
         },
-        Object {
-          "content": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
-          "message": "Expected to match /.+/, but received \`https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png\`.",
-          "property": "og:image:url",
-          "valid": true,
-        },
-        Object {
-          "content": "1200",
-          "message": "Expected \\"og:image:width\\" to be an integer >= 600, received 1200",
-          "property": "og:image:width",
-          "valid": true,
-        },
-        Object {
-          "content": "626",
-          "message": "Required to be integer, received 626.",
-          "property": "og:image:height",
-          "valid": true,
-        },
       ],
     },
     "og": Object {
@@ -188,7 +170,7 @@ Object {
       "validations": Array [
         Object {
           "content": "summary_large_image",
-          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received \`summary_large_image\`.",
+          "message": "Expected one of (summary, summary_large_image, app, player), received \`summary_large_image\`.",
           "property": "twitter:card",
           "valid": true,
         },
@@ -248,6 +230,15 @@ One of the above url should be set up to be accessed.",
         },
       ],
     },
+    "assetlinks": Object {
+      "errors": Array [
+        Object {
+          "message": "Response status returns 404 when trying to access https://kaihao.dev/.well-known/assetlinks.json.",
+          "property": "assetlinks.json",
+          "valid": false,
+        },
+      ],
+    },
     "facebook": Object {
       "errors": Array [
         Object {
@@ -268,24 +259,6 @@ One of the above url should be set up to be accessed.",
           "content": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
           "message": "Expected to match /.+/, but received \`I&#x27;m Kai Hao, a front-end developer in Taiwan.\`.",
           "property": "og:description",
-          "valid": true,
-        },
-        Object {
-          "content": "https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png",
-          "message": "Expected to match /.+/, but received \`https://kaihao.dev/static/15baf5b2b73048942a827496d3805470/70e2c/default-meta-image.png\`.",
-          "property": "og:image:url",
-          "valid": true,
-        },
-        Object {
-          "content": "1200",
-          "message": "Expected \\"og:image:width\\" to be an integer >= 600, received 1200",
-          "property": "og:image:width",
-          "valid": true,
-        },
-        Object {
-          "content": "626",
-          "message": "Required to be integer, received 626.",
-          "property": "og:image:height",
           "valid": true,
         },
       ],
@@ -501,7 +474,7 @@ One of the above url should be set up to be accessed.",
       "validations": Array [
         Object {
           "content": "summary_large_image",
-          "message": "Expected to match /^(summary|summary_large_image|app|player)$/, but received \`summary_large_image\`.",
+          "message": "Expected one of (summary, summary_large_image, app, player), received \`summary_large_image\`.",
           "property": "twitter:card",
           "valid": true,
         },

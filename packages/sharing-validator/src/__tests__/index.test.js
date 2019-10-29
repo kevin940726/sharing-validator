@@ -1,17 +1,17 @@
-import socialValidator from "../";
+import sharingValidator from "../";
 
 test("kaihao.dev baseline", async () => {
-  const results = await socialValidator("https://kaihao.dev");
+  const results = await sharingValidator("https://kaihao.dev");
 
   expect(results).toMatchSnapshot();
 });
 
 test("kaihao.dev enable all features", async () => {
-  const results = await socialValidator("https://kaihao.dev", {
-    og: true,
+  const results = await sharingValidator("https://kaihao.dev", {
     facebook: true,
     twitter: true,
     AASA: true,
+    assetlinks: true,
     facebookAppLink: {
       ios: true,
       android: true
