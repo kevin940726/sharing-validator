@@ -9,7 +9,7 @@
     "build": "yarn workspaces run build",
     "watch": "yarn workspaces run watch",
     "test": "yarn workspaces run test",
-    "release": "yarn workspaces run release"
+    "release": "np --contents packages/sharing-validator"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
