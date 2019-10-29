@@ -8,15 +8,13 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "watch": "yarn workspaces run watch",
-    "test": "yarn workspaces run test",
-    "release": "np --contents packages/sharing-validator"
+    "test": "yarn workspaces run test"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
     "@babel/preset-env": "^7.6.3",
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
-    "np": "^5.1.2",
     "prettier": "1.18.2"
   },
   "prettier": {}
