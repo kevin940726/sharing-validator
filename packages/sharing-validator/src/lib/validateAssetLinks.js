@@ -20,7 +20,8 @@ async function validateAssetLinks(url) {
         valid: false,
         property: "assetlinks.json"
       }
-    ]
+    ],
+    validations: []
   };
 
   let response;
@@ -67,7 +68,7 @@ ${JSON.stringify(json, null, 2)}`;
     return results;
   }
 
-  return { errors: [] };
+  return { errors: [], validations: [] };
 }
 
 export default validateAssetLinks;

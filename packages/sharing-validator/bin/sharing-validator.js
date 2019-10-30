@@ -12,14 +12,16 @@ const cli = meow(
     Options
       --facebook  Validate Facebook meta
       --twitter  Validate Twitter meta
-      --AASA  Validate apple-app-site-association file for iOS universal links
+      --aasa  Validate apple-app-site-association file for iOS universal links
       --assetlinks  Validate assetlinks.json for Android app links
       --facebookAppLink-ios  Validate iOS facebook app link meta
       --facebookAppLink-android  Validate Android facebook app link meta
+      --all Enable all features
 
     Examples
       $ sharing-validator kaihao.dev
-      $ sharing-validator blog.example.com
+      $ sharing-validator blog.example.com --aasa
+      $ sharing-validator https://example.com --all
 `,
   {
     flags: {
@@ -42,6 +44,9 @@ const cli = meow(
       },
       "facebookAppLink-android": {
         type: "boolean"
+      },
+      all: {
+        type: "boolean"
       }
     }
   }
@@ -49,14 +54,19 @@ const cli = meow(
 
 const [url] = cli.input;
 
+function getFlag(key) {
+  return cli.flags[key] || cli.flags.all;
+}
+
 const options = {
-  facebook: cli.flags.facebook,
-  twitter: cli.flags.twitter,
-  AASA: cli.flags.aasa,
-  assetlinks: cli.flags.assetlinks,
+  og: true,
+  facebook: getFlag("facebook"),
+  twitter: getFlag("twitter"),
+  AASA: getFlag("aasa"),
+  assetlinks: getFlag("assetlinks"),
   facebookAppLink: {
-    ios: cli.flags.facebookAppLinkIos,
-    android: cli.flags.facebookAppLinkAndroid
+    ios: getFlag("facebookAppLinkIos"),
+    android: getFlag("facebookAppLinkAndroid")
   }
 };
 
@@ -68,34 +78,49 @@ if (!url) {
   process.exit(1);
 }
 
-function logErrors(feature, errors) {
-  if (!errors.length) {
-    console.log(
-      chalk`✔️  {yellow.bold ${feature}} {bgGreen.bold.rgb(0,0,0)  ALL PASS }`
-    );
-  } else {
-    console.log(chalk`❌  {yellow.bold ${feature}}`);
-    errors.forEach(error => {
-      console.log(
-        chalk`  {greenBright.underline "${error.property}"} - {red ${error.message}}`
-      );
-    });
+function logValidations(feature, validations) {
+  if (!validations.length) {
+    return;
   }
+
+  console.log(chalk`{bgGreen.bold.rgb(0,0,0)  ${feature} }`);
+
+  validations.forEach(validation => {
+    if (!validation.content && validation.valid) {
+      // optional fields
+      return;
+    }
+
+    console.log(
+      chalk`${validation.valid ? "✔️" : "❌"}  {greenBright.underline "${
+        validation.property
+      }"} = ${
+        typeof validation.content === "string"
+          ? `"${validation.content}"`
+          : validation.content
+      }`
+    );
+    if (!validation.valid && validation.message) {
+      console.log(chalk`  {red ${validation.message}}`);
+    }
+  });
 
   console.log("");
 }
 
 sharingValidator(url, options).then(({ meta, results }) => {
-  for (let feature in options) {
+  for (let feature in results) {
     if (options[feature]) {
-      if ("errors" in results[feature]) {
-        logErrors(feature, results[feature].errors);
+      if (results[feature].hasOwnProperty("validations")) {
+        logValidations(feature, results[feature].validations);
       } else {
         for (let subFeature in results[feature]) {
-          logErrors(
-            `${feature}.${subFeature}`,
-            results[feature][subFeature].errors
-          );
+          if (options[feature][subFeature]) {
+            logValidations(
+              `${feature}.${subFeature}`,
+              results[feature][subFeature].validations
+            );
+          }
         }
       }
     }

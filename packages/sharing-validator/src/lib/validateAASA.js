@@ -21,7 +21,8 @@ async function validateAASA(url) {
         valid: false,
         property: "apple-app-site-association"
       }
-    ]
+    ],
+    validations: []
   };
 
   let response;
