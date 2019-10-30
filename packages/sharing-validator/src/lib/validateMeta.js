@@ -31,39 +31,34 @@ function validateMeta(meta, patterns) {
       const property = parentKeys.join(":");
       const message = `Expected to match ${pattern.toString()}, but received \`${target}\`.`;
 
-      validations.push({
+      const validation = {
         valid,
         property,
         content: target,
         message
-      });
+      };
+
+      validations.push(validation);
 
       if (!valid) {
-        errors.push({
-          valid,
-          property,
-          content: target,
-          message
-        });
+        errors.push(validation);
       }
     } else if (typeof pattern === "function") {
-      const { valid, message } = pattern(target, meta, parentKeys);
+      const { valid, message, type } = pattern(target, meta, parentKeys);
       const property = parentKeys.join(":");
 
-      validations.push({
+      const validation = {
         valid: !!valid,
+        type,
         property,
         content: target,
         message
-      });
+      };
+
+      validations.push(validation);
 
       if (!valid) {
-        errors.push({
-          valid: false,
-          property,
-          content: target,
-          message
-        });
+        errors.push(validation);
       }
     } else {
       recursiveValidate(target, pattern.pattern, parentKeys);

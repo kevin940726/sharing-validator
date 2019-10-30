@@ -57,6 +57,7 @@ const VALIDATE_PATTERNS = {
         }
 
         return {
+          type: "warning",
           valid: !!(image.url && content),
           message:
             '"og:image.alt" is required when specifying "og:image" or "og:image:url"'

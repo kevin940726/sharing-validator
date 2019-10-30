@@ -91,10 +91,14 @@ function logValidations(feature, validations) {
       return;
     }
 
+    let icon = validation.valid ? "✅" : "❌";
+    if (validation.type === "warning" && !validation.valid) {
+      // Weird that warning emoji needs to be padded to the same length
+      icon = "⚠️ ";
+    }
+
     console.log(
-      chalk`${validation.valid ? "✔️" : "❌"}  {greenBright.underline "${
-        validation.property
-      }"} = ${
+      chalk`${icon}  {greenBright.underline "${validation.property}"} = ${
         typeof validation.content === "string"
           ? `"${validation.content}"`
           : validation.content

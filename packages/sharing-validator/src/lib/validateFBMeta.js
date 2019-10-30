@@ -7,7 +7,12 @@ import {
 // https://developers.facebook.com/docs/sharing/best-practices
 const FB_VALIDATE_PATTERNS = {
   fb: {
-    app_id: STRING_PATTERN_REQUIRED
+    app_id: content => ({
+      valid: !!content,
+      type: "warning",
+      message:
+        "In order to use Facebook Insights you must add the app ID to your page."
+    })
   },
   og: {
     description: STRING_PATTERN_REQUIRED,
@@ -29,6 +34,7 @@ const FB_VALIDATE_PATTERNS = {
 
         if (!imageURL) {
           return {
+            type: "warning",
             valid: false,
             message: `Should at least provide either "og:image" or "og:image:url".`
           };
