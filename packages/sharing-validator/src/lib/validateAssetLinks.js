@@ -34,13 +34,13 @@ async function validateAssetLinks(url) {
     );
   } catch (error) {
     result.message = `Response status returns ${error.status} when trying to access https://${domain}/.well-known/assetlinks.json.`;
-    return getResults(results);
+    return getResults(result);
   }
 
   const contentType = response.headers.get("content-type");
   if (contentType.split(";")[0].trim() !== "application/json") {
     result.message = `The "assetlinks.json" file is NOT served with content-type "application/json", received ${contentType}`;
-    return getResults(results);
+    return getResults(result);
   }
 
   const text = await response.text();
@@ -50,12 +50,12 @@ async function validateAssetLinks(url) {
   } catch (err) {
     result.message = `Invalid JSON format, received:
 ${text}`;
-    return getResults(results);
+    return getResults(result);
   }
 
   if (!Array.isArray(json)) {
     result.message = `Expected an array of object, received ${typeof json}`;
-    return getResults(results);
+    return getResults(result);
   }
 
   if (
@@ -68,7 +68,7 @@ ${text}`;
   ) {
     result.message = `The file is NOT a valid statement list, see the doc for more info.
 ${JSON.stringify(json, null, 2)}`;
-    return getResults(results);
+    return getResults(result);
   }
 
   result.valid = true;
