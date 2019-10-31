@@ -12,16 +12,19 @@ function fetchWithUserAgentAndContentType(url) {
   });
 }
 
+function getResults(result) {
+  return {
+    validations: [result],
+    errors: result.valid ? [] : [result]
+  };
+}
+
 async function validateAssetLinks(url) {
   const domain = getDomain(url);
-  const results = {
-    errors: [
-      {
-        valid: false,
-        property: "assetlinks.json"
-      }
-    ],
-    validations: []
+  const result = {
+    valid: false,
+    property: "assetlinks.json",
+    content: () => "Error"
   };
 
   let response;
@@ -30,14 +33,14 @@ async function validateAssetLinks(url) {
       `https://${domain}/.well-known/assetlinks.json`
     );
   } catch (error) {
-    results.errors[0].message = `Response status returns ${error.status} when trying to access https://${domain}/.well-known/assetlinks.json.`;
-    return results;
+    result.message = `Response status returns ${error.status} when trying to access https://${domain}/.well-known/assetlinks.json.`;
+    return getResults(results);
   }
 
   const contentType = response.headers.get("content-type");
   if (contentType.split(";")[0].trim() !== "application/json") {
-    results.errors[0].message = `The "assetlinks.json" file is NOT served with content-type "application/json", received ${contentType}`;
-    return results;
+    result.message = `The "assetlinks.json" file is NOT served with content-type "application/json", received ${contentType}`;
+    return getResults(results);
   }
 
   const text = await response.text();
@@ -45,14 +48,14 @@ async function validateAssetLinks(url) {
   try {
     json = JSON.parse(text);
   } catch (err) {
-    results.errors[0].message = `Invalid JSON format, received:
+    result.message = `Invalid JSON format, received:
 ${text}`;
-    return results;
+    return getResults(results);
   }
 
   if (!Array.isArray(json)) {
-    results.errors[0].message = `Expected an array of object, received ${typeof json}`;
-    return results;
+    result.message = `Expected an array of object, received ${typeof json}`;
+    return getResults(results);
   }
 
   if (
@@ -63,12 +66,17 @@ ${text}`;
         typeof statement.target === "object"
     )
   ) {
-    results.errors[0].message = `The file is NOT a valid statement list, see the doc for more info.
+    result.message = `The file is NOT a valid statement list, see the doc for more info.
 ${JSON.stringify(json, null, 2)}`;
-    return results;
+    return getResults(results);
   }
 
-  return { errors: [], validations: [] };
+  result.valid = true;
+  result.content = {
+    toString: () => "Valid"
+  };
+
+  return getResults(result);
 }
 
 export default validateAssetLinks;
