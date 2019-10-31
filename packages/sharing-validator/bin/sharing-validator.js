@@ -2,7 +2,7 @@
 
 const meow = require("meow");
 const chalk = require("chalk");
-const sharingValidator = require("../");
+const sharingValidator = require("../").default;
 
 const cli = meow(
   `
