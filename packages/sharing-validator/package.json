@@ -1,6 +1,6 @@
 {
   "name": "sharing-validator",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "bin": "bin/sharing-validator.js",
   "source": "src/index.js",
   "main": "dist/index.js",
