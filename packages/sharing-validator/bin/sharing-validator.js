@@ -79,18 +79,17 @@ if (!url) {
 }
 
 function logValidations(feature, validations) {
-  if (!validations.length) {
+  const validationList = validations.filter(
+    validation => validation.content || !validation.valid
+  );
+
+  if (!validationList.length) {
     return;
   }
 
   console.log(chalk`{bgGreen.bold.rgb(0,0,0)  ${feature} }`);
 
-  validations.forEach(validation => {
-    if (!validation.content && validation.valid) {
-      // optional fields
-      return;
-    }
-
+  validationList.forEach(validation => {
     let icon = validation.valid ? "✅" : "❌";
     if (validation.type === "warning" && !validation.valid) {
       // Weird that warning emoji needs to be padded to the same length
