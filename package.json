@@ -8,7 +8,8 @@
   "scripts": {
     "build": "yarn workspaces run build",
     "watch": "yarn workspaces run watch",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspaces run test",
+    "prepublish": "yarn build && yarn test"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
