@@ -44,15 +44,14 @@ function validateMeta(meta, patterns) {
         errors.push(validation);
       }
     } else if (typeof pattern === "function") {
-      const { valid, message, type } = pattern(target, meta, parentKeys);
+      const { valid, ...result } = pattern(target, meta, parentKeys);
       const property = parentKeys.join(":");
 
       const validation = {
         valid: !!valid,
-        type,
         property,
         content: target,
-        message
+        ...result
       };
 
       validations.push(validation);
