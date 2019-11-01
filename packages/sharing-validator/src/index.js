@@ -1,6 +1,6 @@
 import { URL } from "url";
 import getMetaData from "./lib/getMetaData";
-import parseOGMeta from "./lib/parseOGMeta";
+import parseMeta from "./lib/parseMeta";
 import validateOGMeta from "./lib/validateOGMeta";
 import validateFBMeta from "./lib/validateFBMeta";
 import validateTwitterMeta from "./lib/validateTwitterMeta";
@@ -43,7 +43,7 @@ const sharingValidator = async (
   const fullURL = transformToFullURL(url);
 
   const rawMeta = await getMetaData(fullURL, { userAgent });
-  const meta = parseOGMeta(rawMeta);
+  const meta = parseMeta(rawMeta);
 
   const results = {};
 
@@ -60,7 +60,7 @@ const sharingValidator = async (
     const ogURLRawMeta = await getMetaData(ogURL, {
       userAgent: USER_AGENTS.facebook
     });
-    ogURLMeta = parseOGMeta(ogURLRawMeta);
+    ogURLMeta = parseMeta(ogURLRawMeta);
   }
 
   if (facebook) {

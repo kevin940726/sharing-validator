@@ -1,4 +1,4 @@
-import parseOGMeta from "../parseOGMeta";
+import parseMeta from "../parseMeta";
 import getMetaData from "../getMetaData";
 
 test("baseline", () => {
@@ -31,7 +31,7 @@ test("baseline", () => {
     ["theme-color", "#f2994a"]
   ];
 
-  expect(parseOGMeta(meta)).toMatchSnapshot();
+  expect(parseMeta(meta)).toMatchSnapshot();
 });
 
 // https://ogp.me/#array
@@ -45,7 +45,7 @@ test("array", () => {
     ["og:image:height", "1000"]
   ];
 
-  expect(parseOGMeta(meta)).toEqual({
+  expect(parseMeta(meta)).toEqual({
     og: {
       image: [
         { url: "http://example.com/rock.jpg", width: "300", height: "300" },
@@ -66,7 +66,7 @@ test("array 2", () => {
     ["og:image:width", "300"]
   ];
 
-  expect(parseOGMeta(meta)).toEqual({
+  expect(parseMeta(meta)).toEqual({
     og: {
       image: [
         { url: "http://example.com/rock.jpg" },

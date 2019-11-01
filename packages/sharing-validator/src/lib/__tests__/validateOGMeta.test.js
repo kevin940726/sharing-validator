@@ -1,5 +1,5 @@
 import validateOGMeta from "../validateOGMeta";
-import parseOGMeta from "../parseOGMeta";
+import parseMeta from "../parseMeta";
 import getMetaData from "../getMetaData";
 
 test("baseline", () => {
@@ -32,7 +32,7 @@ test("baseline", () => {
     ["theme-color", "#f2994a"]
   ];
 
-  const parsedMeta = parseOGMeta(meta);
+  const parsedMeta = parseMeta(meta);
 
   expect(validateOGMeta(parsedMeta)).toMatchSnapshot();
 });
@@ -47,7 +47,7 @@ test("array", () => {
     ["og:image:height", "1000"]
   ];
 
-  const parsedMeta = parseOGMeta(meta);
+  const parsedMeta = parseMeta(meta);
 
   expect(validateOGMeta(parsedMeta)).toMatchSnapshot();
 });
