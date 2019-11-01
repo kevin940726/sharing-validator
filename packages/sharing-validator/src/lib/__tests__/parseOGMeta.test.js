@@ -55,3 +55,24 @@ test("array", () => {
     }
   });
 });
+
+// hotels.com
+test("array 2", () => {
+  const meta = [
+    ["og:image", "http://example.com/rock.jpg"],
+    ["og:image", "http://example.com/rock2.jpg"],
+    ["og:image", "http://example.com/rock3.jpg"],
+    ["og:image:height", "1000"],
+    ["og:image:width", "300"]
+  ];
+
+  expect(parseOGMeta(meta)).toEqual({
+    og: {
+      image: [
+        { url: "http://example.com/rock.jpg" },
+        { url: "http://example.com/rock2.jpg" },
+        { url: "http://example.com/rock3.jpg", width: "300", height: "1000" }
+      ]
+    }
+  });
+});

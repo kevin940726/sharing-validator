@@ -15,6 +15,17 @@ function parseMetaData(meta) {
         target[property] = {
           url: target[property]
         };
+      } else if (
+        Array.isArray(target[property]) &&
+        target[property].some(item => typeof item === "string")
+      ) {
+        target[property] = target[property].map(item =>
+          typeof item === "string"
+            ? {
+                url: item
+              }
+            : item
+        );
       } else {
         target[property] = target[property] || {};
       }
@@ -44,6 +55,7 @@ function parseMetaData(meta) {
           target[lastKey] = [].concat(target[lastKey], { url: value });
         }
       }
+    } else if (typeof target === "string") {
     } else {
       target[lastKey] = value;
     }
