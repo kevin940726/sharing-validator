@@ -1,7 +1,7 @@
 name: Node.js Package
 
 on:
-  push:
+  create:
     tags:
       - "v[0-9]+.[0-9]+.[0-9]+"
 
