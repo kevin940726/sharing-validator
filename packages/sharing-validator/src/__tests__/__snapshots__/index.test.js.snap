@@ -37,6 +37,7 @@ Object {
           "valid": false,
         },
       ],
+      "name": "Facebook",
       "validations": Array [
         Object {
           "content": undefined,
@@ -63,6 +64,7 @@ Object {
           "valid": false,
         },
       ],
+      "name": "Open Graph",
       "validations": Array [
         Object {
           "content": "https://kaihao.dev/",
@@ -171,6 +173,7 @@ Object {
     },
     "twitter": Object {
       "errors": Array [],
+      "name": "Twitter",
       "validations": Array [
         Object {
           "content": "summary_large_image",
@@ -226,9 +229,7 @@ Object {
     "AASA": Object {
       "errors": Array [
         Object {
-          "content": Object {
-            "toString": [Function],
-          },
+          "content": "Error",
           "message": "Response status returns 404 when trying to access https://kaihao.dev/apple-app-site-association,
 and returns status 404 when trying to access https://kaihao.dev/.well-known/apple-app-site-association.
 One of the above url should be set up to be accessed.",
@@ -236,11 +237,10 @@ One of the above url should be set up to be accessed.",
           "valid": false,
         },
       ],
+      "name": "Apple universal link",
       "validations": Array [
         Object {
-          "content": Object {
-            "toString": [Function],
-          },
+          "content": "Error",
           "message": "Response status returns 404 when trying to access https://kaihao.dev/apple-app-site-association,
 and returns status 404 when trying to access https://kaihao.dev/.well-known/apple-app-site-association.
 One of the above url should be set up to be accessed.",
@@ -252,15 +252,16 @@ One of the above url should be set up to be accessed.",
     "assetlinks": Object {
       "errors": Array [
         Object {
-          "content": [Function],
+          "content": "Error",
           "message": "Response status returns 404 when trying to access https://kaihao.dev/.well-known/assetlinks.json.",
           "property": "assetlinks.json",
           "valid": false,
         },
       ],
+      "name": "Android app link",
       "validations": Array [
         Object {
-          "content": [Function],
+          "content": "Error",
           "message": "Response status returns 404 when trying to access https://kaihao.dev/.well-known/assetlinks.json.",
           "property": "assetlinks.json",
           "valid": false,
@@ -277,6 +278,7 @@ One of the above url should be set up to be accessed.",
           "valid": false,
         },
       ],
+      "name": "Facebook",
       "validations": Array [
         Object {
           "content": undefined,
@@ -293,97 +295,97 @@ One of the above url should be set up to be accessed.",
         },
       ],
     },
-    "facebookAppLink": Object {
-      "android": Object {
-        "errors": Array [
-          Object {
-            "content": undefined,
-            "message": "Expected to match /.+/, but received \`undefined\`.",
-            "property": "al:android:package",
-            "valid": false,
-          },
-        ],
-        "validations": Array [
-          Object {
-            "content": undefined,
-            "message": "Expected string, received undefined.",
-            "property": "al:android:app_name",
-            "valid": true,
-          },
-          Object {
-            "content": undefined,
-            "message": "Expected to match /.+/, but received \`undefined\`.",
-            "property": "al:android:package",
-            "valid": false,
-          },
-          Object {
-            "content": undefined,
-            "message": "Expected string, received undefined.",
-            "property": "al:android:class",
-            "valid": true,
-          },
-          Object {
-            "content": undefined,
-            "message": "Expected to match /^(.+:\\\\/\\\\/.*|)$/, but received \`undefined\`.",
-            "property": "al:android:url",
-            "valid": true,
-          },
-          Object {
-            "content": undefined,
-            "message": "Expected to match /^(true|false|)$/, but received \`undefined\`.",
-            "property": "al:web:should_fallback",
-            "valid": true,
-          },
-          Object {
-            "content": undefined,
-            "message": "Failed to parse the url. Invalid URL",
-            "property": "al:web:url",
-            "valid": true,
-          },
-        ],
-      },
-      "ios": Object {
-        "errors": Array [
-          Object {
-            "content": undefined,
-            "message": "Expected to match /^(.+:\\\\/\\\\/.*)$/, but received \`undefined\`.",
-            "property": "al:ios:url",
-            "valid": false,
-          },
-        ],
-        "validations": Array [
-          Object {
-            "content": undefined,
-            "message": "Expected string, received undefined.",
-            "property": "al:ios:app_name",
-            "valid": true,
-          },
-          Object {
-            "content": undefined,
-            "message": "Expected string, received undefined.",
-            "property": "al:ios:app_store_id",
-            "valid": true,
-          },
-          Object {
-            "content": undefined,
-            "message": "Expected to match /^(.+:\\\\/\\\\/.*)$/, but received \`undefined\`.",
-            "property": "al:ios:url",
-            "valid": false,
-          },
-          Object {
-            "content": undefined,
-            "message": "Expected to match /^(true|false|)$/, but received \`undefined\`.",
-            "property": "al:web:should_fallback",
-            "valid": true,
-          },
-          Object {
-            "content": undefined,
-            "message": "Failed to parse the url. Invalid URL",
-            "property": "al:web:url",
-            "valid": true,
-          },
-        ],
-      },
+    "facebookAppLinkAndroid": Object {
+      "errors": Array [
+        Object {
+          "content": undefined,
+          "message": "Expected to match /.+/, but received \`undefined\`.",
+          "property": "al:android:package",
+          "valid": false,
+        },
+      ],
+      "name": "Facebook app link for Android",
+      "validations": Array [
+        Object {
+          "content": undefined,
+          "message": "Expected string, received undefined.",
+          "property": "al:android:app_name",
+          "valid": true,
+        },
+        Object {
+          "content": undefined,
+          "message": "Expected to match /.+/, but received \`undefined\`.",
+          "property": "al:android:package",
+          "valid": false,
+        },
+        Object {
+          "content": undefined,
+          "message": "Expected string, received undefined.",
+          "property": "al:android:class",
+          "valid": true,
+        },
+        Object {
+          "content": undefined,
+          "message": "Expected to match /^(.+:\\\\/\\\\/.*|)$/, but received \`undefined\`.",
+          "property": "al:android:url",
+          "valid": true,
+        },
+        Object {
+          "content": undefined,
+          "message": "Expected to match /^(true|false|)$/, but received \`undefined\`.",
+          "property": "al:web:should_fallback",
+          "valid": true,
+        },
+        Object {
+          "content": undefined,
+          "message": "Failed to parse the url. Invalid URL",
+          "property": "al:web:url",
+          "valid": true,
+        },
+      ],
+    },
+    "facebookAppLinkIOS": Object {
+      "errors": Array [
+        Object {
+          "content": undefined,
+          "message": "Expected to match /^(.+:\\\\/\\\\/.*)$/, but received \`undefined\`.",
+          "property": "al:ios:url",
+          "valid": false,
+        },
+      ],
+      "name": "Facebook app link for iOS",
+      "validations": Array [
+        Object {
+          "content": undefined,
+          "message": "Expected string, received undefined.",
+          "property": "al:ios:app_name",
+          "valid": true,
+        },
+        Object {
+          "content": undefined,
+          "message": "Expected string, received undefined.",
+          "property": "al:ios:app_store_id",
+          "valid": true,
+        },
+        Object {
+          "content": undefined,
+          "message": "Expected to match /^(.+:\\\\/\\\\/.*)$/, but received \`undefined\`.",
+          "property": "al:ios:url",
+          "valid": false,
+        },
+        Object {
+          "content": undefined,
+          "message": "Expected to match /^(true|false|)$/, but received \`undefined\`.",
+          "property": "al:web:should_fallback",
+          "valid": true,
+        },
+        Object {
+          "content": undefined,
+          "message": "Failed to parse the url. Invalid URL",
+          "property": "al:web:url",
+          "valid": true,
+        },
+      ],
     },
     "og": Object {
       "errors": Array [
@@ -395,6 +397,7 @@ One of the above url should be set up to be accessed.",
           "valid": false,
         },
       ],
+      "name": "Open Graph",
       "validations": Array [
         Object {
           "content": "https://kaihao.dev/",
@@ -503,6 +506,7 @@ One of the above url should be set up to be accessed.",
     },
     "twitter": Object {
       "errors": Array [],
+      "name": "Twitter",
       "validations": Array [
         Object {
           "content": "summary_large_image",

@@ -12,10 +12,8 @@ test("kaihao.dev enable all features", async () => {
     twitter: true,
     AASA: true,
     assetlinks: true,
-    facebookAppLink: {
-      ios: true,
-      android: true
-    }
+    facebookAppLinkIOS: true,
+    facebookAppLinkAndroid: true
   });
 
   expect(results).toMatchSnapshot();
