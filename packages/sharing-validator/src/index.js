@@ -36,7 +36,8 @@ const sharingValidator = async (
     twitter = true,
     AASA = false,
     assetlinks = false,
-    facebookAppLink = false
+    facebookAppLinkIOS = false,
+    facebookAppLinkAndroid = false
   } = {},
   { userAgent = USER_AGENTS.general } = {}
 ) => {
@@ -48,6 +49,7 @@ const sharingValidator = async (
   const results = {};
 
   results.og = validateOGMeta(meta);
+  results.og.name = "Open Graph";
 
   let ogURLMeta = meta;
   if (
@@ -65,25 +67,27 @@ const sharingValidator = async (
 
   if (facebook) {
     results.facebook = validateFBMeta(ogURLMeta);
+    results.facebook.name = "Facebook";
   }
   if (twitter) {
     results.twitter = validateTwitterMeta(meta);
+    results.twitter.name = "Twitter";
   }
   if (AASA) {
     results.AASA = await validateAASA(fullURL);
+    results.AASA.name = "Apple universal link";
   }
   if (assetlinks) {
     results.assetlinks = await validateAssetLinks(fullURL);
+    results.assetlinks.name = "Android app link";
   }
-  if (facebookAppLink) {
-    results.facebookAppLink = {};
-
-    if (facebookAppLink.ios) {
-      results.facebookAppLink.ios = validateFBAppLinkIOSMeta(ogURLMeta);
-    }
-    if (facebookAppLink.android) {
-      results.facebookAppLink.android = validateFBAppLinkAndroidMeta(ogURLMeta);
-    }
+  if (facebookAppLinkIOS) {
+    results.facebookAppLinkIOS = validateFBAppLinkIOSMeta(ogURLMeta);
+    results.facebookAppLinkIOS.name = "Facebook app link for iOS";
+  }
+  if (facebookAppLinkAndroid) {
+    results.facebookAppLinkAndroid = validateFBAppLinkAndroidMeta(ogURLMeta);
+    results.facebookAppLinkAndroid.name = "Facebook app link for Android";
   }
 
   return {

@@ -14,8 +14,8 @@ const cli = meow(
       --twitter  Validate Twitter meta
       --aasa  Validate apple-app-site-association file for iOS universal links
       --assetlinks  Validate assetlinks.json for Android app links
-      --facebookAppLink-ios  Validate iOS facebook app link meta
-      --facebookAppLink-android  Validate Android facebook app link meta
+      --facebook-app-link-ios  Validate iOS facebook app link meta
+      --facebook-app-link-android  Validate Android facebook app link meta
       --all Enable all features
 
     Examples
@@ -39,10 +39,10 @@ const cli = meow(
       assetlinks: {
         type: "boolean"
       },
-      "facebookAppLink-ios": {
+      "facebook-app-link-ios": {
         type: "boolean"
       },
-      "facebookAppLink-android": {
+      "facebook-app-link-android": {
         type: "boolean"
       },
       all: {
@@ -64,10 +64,8 @@ const options = {
   twitter: getFlag("twitter"),
   AASA: getFlag("aasa"),
   assetlinks: getFlag("assetlinks"),
-  facebookAppLink: {
-    ios: getFlag("facebookAppLinkIos"),
-    android: getFlag("facebookAppLinkAndroid")
-  }
+  facebookAppLinkIOS: getFlag("facebookAppLinkIos"),
+  facebookAppLinkAndroid: getFlag("facebookAppLinkAndroid")
 };
 
 if (!url) {
@@ -78,7 +76,20 @@ if (!url) {
   process.exit(1);
 }
 
-function logValidations(feature, validations) {
+function getContent({ property, content }) {
+  if (typeof content === "undefined") {
+    return chalk.gray`undefined`;
+  } else if (
+    (property === "apple-app-site-association" ||
+      property === "assetlinks.json") &&
+  ) {
+    return chalk.bold`${content}`;
+  } else {
+    return JSON.stringify(content, null, 2);
+  }
+}
+
+function logValidations({ name, validations }) {
   const validationList = validations.filter(
     validation => validation.content || !validation.valid
   );
@@ -87,7 +98,7 @@ function logValidations(feature, validations) {
     return;
   }
 
-  console.log(chalk`{bgGreen.bold.rgb(0,0,0)  ${feature} }`);
+  console.log(chalk`{bgGreen.bold.rgb(0,0,0)  ${name} }`);
 
   validationList.forEach(validation => {
     let icon = validation.valid ? "✅" : "❌";
@@ -97,11 +108,9 @@ function logValidations(feature, validations) {
     }
 
     console.log(
-      chalk`${icon}  {greenBright.underline "${validation.property}"} = ${
-        typeof validation.content === "string"
-          ? `"${validation.content}"`
-          : validation.content
-      }`
+      chalk`${icon}  {greenBright.underline "${
+        validation.property
+      }"} = ${getContent(validation)}`
     );
     if (!validation.valid && validation.message) {
       console.log(chalk`  {red ${validation.message}}`);
@@ -114,18 +123,7 @@ function logValidations(feature, validations) {
 sharingValidator(url, options).then(({ meta, results }) => {
   for (let feature in results) {
     if (options[feature]) {
-      if (results[feature].hasOwnProperty("validations")) {
-        logValidations(feature, results[feature].validations);
-      } else {
-        for (let subFeature in results[feature]) {
-          if (options[feature][subFeature]) {
-            logValidations(
-              `${feature}.${subFeature}`,
-              results[feature][subFeature].validations
-            );
-          }
-        }
-      }
+      logValidations(results[feature]);
     }
   }
 });

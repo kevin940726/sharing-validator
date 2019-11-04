@@ -26,9 +26,7 @@ async function validateAASA(url) {
   const result = {
     valid: false,
     property: "apple-app-site-association",
-    content: {
-      toString: () => "Error"
-    }
+    content: "Error"
   };
 
   let response;
@@ -89,9 +87,7 @@ ${JSON.stringify(json.applinks.apps, null, 2)}`;
   }
 
   result.valid = true;
-  result.content = {
-    toString: () => "Valid"
-  };
+  result.content = "Valid";
 
   return getResults(result);
 }

@@ -1,0 +1,36 @@
+{
+  "name": "sharing-validator-web",
+  "version": "0.1.0",
+  "private": true,
+  "browser": {
+    "sharing-validator": false
+  },
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "modern-normalize": "^0.5.0",
+    "next": "9.1.2",
+    "next-images": "^1.2.0",
+    "react": "16.11.0",
+    "react-dom": "16.11.0",
+    "sharing-validator": "^0.2.8",
+    "styled-components": "^4.4.1",
+    "typeface-fira-sans": "^0.0.75"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.4",
+    "@storybook/addon-actions": "^5.2.5",
+    "@storybook/addon-links": "^5.2.5",
+    "@storybook/addons": "^5.2.5",
+    "@storybook/react": "^5.2.5",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-macros": "^2.6.1",
+    "babel-plugin-styled-components": "^1.10.6"
+  }
+}

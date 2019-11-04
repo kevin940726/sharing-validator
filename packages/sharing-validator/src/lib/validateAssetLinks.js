@@ -24,7 +24,7 @@ async function validateAssetLinks(url) {
   const result = {
     valid: false,
     property: "assetlinks.json",
-    content: () => "Error"
+    content: "Error"
   };
 
   let response;
@@ -72,9 +72,7 @@ ${JSON.stringify(json, null, 2)}`;
   }
 
   result.valid = true;
-  result.content = {
-    toString: () => "Valid"
-  };
+  result.content = "Valid";
 
   return getResults(result);
 }
