@@ -2,6 +2,7 @@ import React from "react";
 import { css } from "styled-components";
 import URLInput from "./URLInput";
 import Features from "./Features";
+import { mobile } from "../utils/media";
 
 function getDefaultOption(query, key, defaultValue) {
   return query[key] ? query[key] === "on" : defaultValue;
@@ -39,6 +40,10 @@ const Hero = ({ query }) => {
         text-align: center;
         width: 800px;
         max-width: 100%;
+
+        ${mobile(css`
+          padding: 60px 20px 30px;
+        `)}
       `}
     >
       <h1
@@ -46,6 +51,10 @@ const Hero = ({ query }) => {
           font-size: 72px;
           font-weight: lighter;
           margin-bottom: 0;
+
+          ${mobile(css`
+            font-size: 48px;
+          `)}
         `}
       >
         Sharing Validator
@@ -61,17 +70,6 @@ const Hero = ({ query }) => {
       </h2>
       <URLInput value={input} onChange={e => setInput(e.currentTarget.value)} />
       <Features options={options} toggleFeature={toggleFeature} />
-
-      <button
-        type="submit"
-        css={css`
-          align-self: center;
-          border: 1px solid #999;
-          padding: 10px 20px;
-        `}
-      >
-        Validate
-      </button>
     </form>
   );
 };

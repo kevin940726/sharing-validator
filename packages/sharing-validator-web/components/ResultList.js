@@ -3,22 +3,18 @@ import styled, { css } from "styled-components";
 import validIcon from "../assets/check.svg";
 import errorIcon from "../assets/x.svg";
 import warningIcon from "../assets/alert-triangle.svg";
-
-const ORDER = [
-  "og",
-  "facebook",
-  "twitter",
-  "AASA",
-  "assetlinks",
-  "facebookAppLinkIOS",
-  "facebookAppLinkAndroid"
-];
+import { FEATURES_ORDER, NAMES } from "../constants/features";
+import { mobile } from "../utils/media";
 
 const Property = styled.span`
   width: 150px;
   flex-shrink: 0;
   font-weight: bold;
   margin-right: 10px;
+
+  ${mobile(css`
+    flex-grow: 1;
+  `)}
 `;
 
 const Content = ({ property, children }) => {
@@ -58,6 +54,15 @@ const Content = ({ property, children }) => {
         flex-shrink: 1;
         flex-basis: 0;
         min-width: 0;
+        word-break: break-word;
+
+        ${mobile(css`
+          flex-shrink: 0;
+          flex-basis: 100%;
+          width: 100%;
+          min-width: 100%;
+          margin-top: 10px;
+        `)}
       `}
     >
       {content}
@@ -98,23 +103,24 @@ const ErrorMessage = styled.div`
   color: #f44336;
   margin-top: 10px;
   padding: 0 5px 0 198px;
+
+  ${mobile(css`
+    padding: 0;
+  `)}
 `;
 
-const Result = ({ result }) => {
+const Result = ({ feature, result }) => {
   return (
-    <li
-      css={css`
-        border: 1px solid #e0e0e0;
-      `}
-    >
+    <li>
       <h3
         css={css`
           padding: 12px 20px;
-          background-color: #e0e0e0;
+          background-color: #00d1b2;
           margin: 0;
+          color: #ffffff;
         `}
       >
-        {result.name}
+        {NAMES[feature]}
       </h3>
 
       <ul
@@ -137,6 +143,10 @@ const Result = ({ result }) => {
                 & + & {
                   border-top: 1px solid #eee;
                 }
+
+                ${mobile(css`
+                  justify-content: flex-start;
+                `)}
               `}
             >
               <Icon valid={validation.valid} type={validation.type} />
@@ -160,10 +170,13 @@ const ResultList = ({ results }) => {
       css={css`
         list-style: none;
         padding: 0;
+        width: 860px;
+        max-width: 100%;
+        margin-bottom: 60px;
       `}
     >
-      {ORDER.filter(feature => results[feature]).map(feature => (
-        <Result key={feature} result={results[feature]} />
+      {FEATURES_ORDER.filter(feature => results[feature]).map(feature => (
+        <Result key={feature} feature={feature} result={results[feature]} />
       ))}
     </ul>
   );
