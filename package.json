@@ -6,9 +6,9 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces run build",
+    "build": "yarn workspace sharing-validator run build && yarn workspace sharing-validator-web run build",
     "watch": "yarn workspaces run watch",
-    "test": "yarn workspaces run test"
+    "test": "yarn workspace sharing-validator run test"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

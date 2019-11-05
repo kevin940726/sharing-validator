@@ -237,7 +237,7 @@ One of the above url should be set up to be accessed.",
           "valid": false,
         },
       ],
-      "name": "Apple universal link",
+      "name": "Apple Universal Links",
       "validations": Array [
         Object {
           "content": "Error",
@@ -258,7 +258,7 @@ One of the above url should be set up to be accessed.",
           "valid": false,
         },
       ],
-      "name": "Android app link",
+      "name": "Android App Links",
       "validations": Array [
         Object {
           "content": "Error",
@@ -304,7 +304,7 @@ One of the above url should be set up to be accessed.",
           "valid": false,
         },
       ],
-      "name": "Facebook app link for Android",
+      "name": "Facebook App Links for Android",
       "validations": Array [
         Object {
           "content": undefined,
@@ -353,7 +353,7 @@ One of the above url should be set up to be accessed.",
           "valid": false,
         },
       ],
-      "name": "Facebook app link for iOS",
+      "name": "Facebook App Links for iOS",
       "validations": Array [
         Object {
           "content": undefined,

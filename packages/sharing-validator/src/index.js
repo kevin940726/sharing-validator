@@ -11,6 +11,7 @@ import {
   validateFBAppLinkAndroidMeta
 } from "./lib/validateFBAppLinkMeta";
 import USER_AGENTS from "./lib/userAgents";
+import { NAMES } from "./lib/names";
 
 function transformToFullURL(url) {
   let fullURL = url;
@@ -49,7 +50,6 @@ const sharingValidator = async (
   const results = {};
 
   results.og = validateOGMeta(meta);
-  results.og.name = "Open Graph";
 
   let ogURLMeta = meta;
   if (
@@ -67,27 +67,25 @@ const sharingValidator = async (
 
   if (facebook) {
     results.facebook = validateFBMeta(ogURLMeta);
-    results.facebook.name = "Facebook";
   }
   if (twitter) {
     results.twitter = validateTwitterMeta(meta);
-    results.twitter.name = "Twitter";
   }
   if (AASA) {
     results.AASA = await validateAASA(fullURL);
-    results.AASA.name = "Apple universal link";
   }
   if (assetlinks) {
     results.assetlinks = await validateAssetLinks(fullURL);
-    results.assetlinks.name = "Android app link";
   }
   if (facebookAppLinkIOS) {
     results.facebookAppLinkIOS = validateFBAppLinkIOSMeta(ogURLMeta);
-    results.facebookAppLinkIOS.name = "Facebook app link for iOS";
   }
   if (facebookAppLinkAndroid) {
     results.facebookAppLinkAndroid = validateFBAppLinkAndroidMeta(ogURLMeta);
-    results.facebookAppLinkAndroid.name = "Facebook app link for Android";
+  }
+
+  for (let key in results) {
+    results[key].name = NAMES[key];
   }
 
   return {
@@ -95,5 +93,7 @@ const sharingValidator = async (
     meta
   };
 };
+
+export { NAMES };
 
 export default sharingValidator;
