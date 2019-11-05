@@ -7,10 +7,11 @@ import { FEATURES_ORDER, NAMES } from "../constants/features";
 import { mobile } from "../utils/media";
 
 const Property = styled.span`
-  width: 150px;
+  width: 170px;
   flex-shrink: 0;
   font-weight: bold;
   margin-right: 10px;
+  word-break: break-word;
 
   ${mobile(css`
     flex-grow: 1;
