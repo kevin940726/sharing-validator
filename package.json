@@ -8,7 +8,8 @@
   "scripts": {
     "build": "yarn workspace sharing-validator run build && yarn workspace sharing-validator-web run build",
     "watch": "yarn workspaces run watch",
-    "test": "yarn workspace sharing-validator run test"
+    "test": "yarn workspace sharing-validator run test",
+    "publish-web": "cd packages/sharing-validator-web && now --prod"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",

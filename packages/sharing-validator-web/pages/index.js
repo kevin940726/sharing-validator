@@ -5,7 +5,7 @@ import sharingValidator from "sharing-validator";
 import Hero from "../components/Hero";
 import ResultList from "../components/ResultList";
 
-const App = ({ query, results }) => {
+const App = ({ query, results, error }) => {
   return (
     <main
       css={css`
@@ -14,9 +14,40 @@ const App = ({ query, results }) => {
         align-items: center;
       `}
     >
+      <Head>
+        <meta charset="utf-8" />
+        <title>Sharing Validator</title>
+        <meta
+          name="description"
+          content="Validate best practices for social sharing URLs"
+        />
+        <meta property="og:title" content="Sharing Validator" />
+        <meta
+          property="og:description"
+          content="Validate best practices for social sharing URLs"
+        />
+        <meta property="og:url" content="https://sharing-validator.now.sh" />
+        <meta property="og:type" content="website" />
+      </Head>
+
       <Hero query={query} />
 
-      <ResultList results={results} />
+      {results && <ResultList results={results} />}
+
+      {error && (
+        <pre
+          css={css`
+            width: 680px;
+            max-width: 100%;
+            padding: 20px;
+            word-wrap: break-word;
+            white-space: pre-wrap;
+            color: #f44336;
+          `}
+        >
+          {error}
+        </pre>
+      )}
     </main>
   );
 };
@@ -45,13 +76,20 @@ App.getInitialProps = async ({ query }) => {
     facebookAppLinkAndroid: facebookAppLinkAndroid === "on"
   };
 
-  const { meta, results } = await sharingValidator(url, options);
+  try {
+    const { meta, results } = await sharingValidator(url, options);
 
-  return {
-    query,
-    meta,
-    results
-  };
+    return {
+      query,
+      meta,
+      results
+    };
+  } catch (err) {
+    return {
+      query,
+      error: err.toString()
+    };
+  }
 };
 
 export default App;
