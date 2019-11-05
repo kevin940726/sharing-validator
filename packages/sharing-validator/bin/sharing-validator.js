@@ -80,8 +80,8 @@ function getContent({ property, content }) {
   if (typeof content === "undefined") {
     return chalk.gray`undefined`;
   } else if (
-    (property === "apple-app-site-association" ||
-      property === "assetlinks.json") &&
+    property === "apple-app-site-association" ||
+    property === "assetlinks.json"
   ) {
     return chalk.bold`${content}`;
   } else {
