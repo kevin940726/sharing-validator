@@ -15,7 +15,6 @@ const App = ({ query, results, error }) => {
       `}
     >
       <Head>
-        <meta charset="utf-8" />
         <title>Sharing Validator</title>
         <meta
           name="description"
@@ -85,6 +84,8 @@ App.getInitialProps = async ({ query }) => {
       results
     };
   } catch (err) {
+    console.error(err);
+
     return {
       query,
       error: err.toString()

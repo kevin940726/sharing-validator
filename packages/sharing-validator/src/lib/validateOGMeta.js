@@ -56,6 +56,13 @@ const VALIDATE_PATTERNS = {
           };
         }
 
+        if (!image) {
+          // Not specified image at all
+          return {
+            valid: true
+          };
+        }
+
         return {
           type: "warning",
           valid: !!(image.url && content),
