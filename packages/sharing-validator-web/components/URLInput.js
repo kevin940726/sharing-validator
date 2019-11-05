@@ -2,7 +2,7 @@ import React from "react";
 import styled, { css } from "styled-components";
 import enterIcon from "../assets/corner-down-left.svg";
 
-const URLInput = props => (
+const URLInput = ({ value, ...props }) => (
   <div
     css={css`
       display: flex;
@@ -34,11 +34,13 @@ const URLInput = props => (
       spellCheck="off"
       placeholder="sharing-validator.now.sh"
       name="url"
+      value={value}
       {...props}
     />
 
     <button
       type="submit"
+      disabled={!value}
       css={css`
         display: inline-flex;
         align-items: center;
@@ -50,7 +52,12 @@ const URLInput = props => (
         border-bottom-right-radius: 4px;
         background-color: #00d1b2;
 
-        &:hover {
+        &:disabled {
+          opacity: 0.5;
+          cursor: not-allowed;
+        }
+
+        &:not(:disabled):hover {
           background-color: #00c4a7;
         }
 

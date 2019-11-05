@@ -103,7 +103,7 @@ const ErrorMessage = styled.div`
   width: 100%;
   color: #f44336;
   margin-top: 10px;
-  padding: 0 5px 0 198px;
+  padding: 0 5px 0 218px;
 
   ${mobile(css`
     padding: 0;
