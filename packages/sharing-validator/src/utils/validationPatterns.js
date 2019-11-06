@@ -16,7 +16,7 @@ export const INTEGER_PATTERN = content => ({
 export const URL_PATTERN = content => {
   try {
     let url = content;
-    if (url.startsWith("//")) {
+    if (url && url.startsWith("//")) {
       url = "https:" + url;
     }
 
@@ -36,6 +36,11 @@ export const URL_PATTERN = content => {
 };
 export const SECURE_URL_PATTERN = content => {
   try {
+    let url = content;
+    if (url && url.startsWith("//")) {
+      url = "https:" + url;
+    }
+
     const urlData = new URL(content);
 
     return {
