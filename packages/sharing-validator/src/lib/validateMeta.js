@@ -1,4 +1,4 @@
-function validateMeta(meta, patterns) {
+function validateMeta(meta, patterns, configs) {
   const validations = [];
   const errors = [];
 
@@ -29,7 +29,9 @@ function validateMeta(meta, patterns) {
     } else if (pattern instanceof RegExp) {
       const valid = pattern.test(target || "");
       const property = parentKeys.join(":");
-      const message = `Expected to match ${pattern.toString()}, but received \`${target}\`.`;
+      const message = `Expected to match \`${pattern.toString()}\`, but received \`${JSON.stringify(
+        target
+      )}\`.`;
 
       const validation = {
         valid,
@@ -44,7 +46,7 @@ function validateMeta(meta, patterns) {
         errors.push(validation);
       }
     } else if (typeof pattern === "function") {
-      const { valid, ...result } = pattern(target, meta, parentKeys);
+      const { valid, ...result } = pattern(target, meta, parentKeys, configs);
       const property = parentKeys.join(":");
 
       const validation = {

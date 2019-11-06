@@ -15,7 +15,22 @@ const FB_VALIDATE_PATTERNS = {
     })
   },
   og: {
-    description: STRING_PATTERN_REQUIRED,
+    description: (content, meta) => {
+      if (!content && meta.description) {
+        return {
+          valid: false,
+          type: "warning",
+          content: meta.description,
+          message:
+            '"og:description" is not set, fallback to "description" meta value instead.'
+        };
+      }
+
+      return {
+        valid: !!content,
+        message: `Either property of "og:description" or "description" is required.`
+      };
+    },
     image: {
       pattern: (content, meta, key) => {
         let imageURL;
@@ -36,7 +51,7 @@ const FB_VALIDATE_PATTERNS = {
           return {
             type: "warning",
             valid: false,
-            message: `Should at least provide either "og:image" or "og:image:url".`
+            message: `Either property of "og:image" or "og:image:url" is required.`
           };
         }
 

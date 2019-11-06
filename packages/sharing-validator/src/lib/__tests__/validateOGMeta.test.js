@@ -49,5 +49,7 @@ test("array", () => {
 
   const parsedMeta = parseMeta(meta);
 
-  expect(validateOGMeta(parsedMeta)).toMatchSnapshot();
+  expect(
+    validateOGMeta(parsedMeta, { url: "https://example.com" })
+  ).toMatchSnapshot();
 });

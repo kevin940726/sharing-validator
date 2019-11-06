@@ -4,21 +4,23 @@ exports[`array 1`] = `
 Object {
   "errors": Array [
     Object {
-      "content": undefined,
-      "message": "Expected to match /.+/, but received \`undefined\`.",
+      "content": "https://example.com",
+      "message": "\\"og:url\\" is not set, fallback to the requested url as default value instead",
       "property": "og:url",
+      "type": "warning",
       "valid": false,
     },
     Object {
       "content": undefined,
-      "message": "Expected to match /.+/, but received \`undefined\`.",
+      "message": "Either \\"og:title\\" property or <title> value is required.",
       "property": "og:title",
       "valid": false,
     },
     Object {
-      "content": undefined,
-      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`undefined\`.",
+      "content": "website",
+      "message": "\\"og:type\\" is not set, fallback to \`\\"website\\"\` as default value.",
       "property": "og:type",
+      "type": "warning",
       "valid": false,
     },
     Object {
@@ -45,21 +47,23 @@ Object {
   ],
   "validations": Array [
     Object {
-      "content": undefined,
-      "message": "Expected to match /.+/, but received \`undefined\`.",
+      "content": "https://example.com",
+      "message": "\\"og:url\\" is not set, fallback to the requested url as default value instead",
       "property": "og:url",
+      "type": "warning",
       "valid": false,
     },
     Object {
       "content": undefined,
-      "message": "Expected to match /.+/, but received \`undefined\`.",
+      "message": "Either \\"og:title\\" property or <title> value is required.",
       "property": "og:title",
       "valid": false,
     },
     Object {
-      "content": undefined,
-      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`undefined\`.",
+      "content": "website",
+      "message": "\\"og:type\\" is not set, fallback to \`\\"website\\"\` as default value.",
       "property": "og:type",
+      "type": "warning",
       "valid": false,
     },
     Object {
@@ -76,7 +80,7 @@ Object {
     },
     Object {
       "content": undefined,
-      "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received undefined",
+      "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received \`undefined\`",
       "property": "og:determiner",
       "valid": true,
     },
@@ -227,19 +231,20 @@ Object {
   "validations": Array [
     Object {
       "content": "https://kaihao.dev/",
-      "message": "Expected to match /.+/, but received \`https://kaihao.dev/\`.",
+      "message": "Expected url to have 'http' or 'https' protocol, received https:",
       "property": "og:url",
       "valid": true,
     },
     Object {
       "content": "Kai Hao",
-      "message": "Expected to match /.+/, but received \`Kai Hao\`.",
+      "message": "Either \\"og:title\\" property or <title> value is required.",
       "property": "og:title",
       "valid": true,
     },
     Object {
       "content": "website",
-      "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`website\`.",
+      "message": "\\"og:type\\" should be one of the below, instead received \`\\"website\\"\`.
+(music.song, music.album, music.playlist, music.radio_station, video.movie, video.episode, video.tv_show, video.other, article, book, profile, website)",
       "property": "og:type",
       "valid": true,
     },
@@ -257,7 +262,7 @@ Object {
     },
     Object {
       "content": undefined,
-      "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received undefined",
+      "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received \`undefined\`",
       "property": "og:determiner",
       "valid": true,
     },

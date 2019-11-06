@@ -49,7 +49,7 @@ const sharingValidator = async (
 
   const results = {};
 
-  results.og = validateOGMeta(meta);
+  results.og = validateOGMeta(meta, { url: fullURL });
 
   let ogURLMeta = meta;
   if (

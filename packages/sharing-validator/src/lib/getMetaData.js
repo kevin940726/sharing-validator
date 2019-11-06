@@ -13,6 +13,9 @@ async function getMetadata(
     }
   });
 
+  let isTitle = false;
+  let title = "";
+
   return new Promise(resolve => {
     const meta = [];
 
@@ -21,11 +24,24 @@ async function getMetadata(
         onopentag(name, attrs) {
           if (name === "meta" && (attrs.property || attrs.name)) {
             meta.push([attrs.property || attrs.name, attrs.content]);
+          } else if (name === "title") {
+            isTitle = true;
+            title = "";
+          }
+        },
+        onText(text) {
+          if (isTitle) {
+            title += text;
           }
         },
         onclosetag(name) {
           if (name === "head") {
             htmlParser.end();
+          } else if (name === "title" && isTitle) {
+            if (title) {
+              meta.push(["title", title]);
+            }
+            isTitle = false;
           }
         },
         onend() {

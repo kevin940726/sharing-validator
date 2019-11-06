@@ -48,7 +48,7 @@ Object {
         },
         Object {
           "content": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
-          "message": "Expected to match /.+/, but received \`I&#x27;m Kai Hao, a front-end developer in Taiwan.\`.",
+          "message": "Either property of \\"og:description\\" or \\"description\\" is required.",
           "property": "og:description",
           "valid": true,
         },
@@ -68,19 +68,20 @@ Object {
       "validations": Array [
         Object {
           "content": "https://kaihao.dev/",
-          "message": "Expected to match /.+/, but received \`https://kaihao.dev/\`.",
+          "message": "Expected url to have 'http' or 'https' protocol, received https:",
           "property": "og:url",
           "valid": true,
         },
         Object {
           "content": "Kai Hao",
-          "message": "Expected to match /.+/, but received \`Kai Hao\`.",
+          "message": "Either \\"og:title\\" property or <title> value is required.",
           "property": "og:title",
           "valid": true,
         },
         Object {
           "content": "website",
-          "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`website\`.",
+          "message": "\\"og:type\\" should be one of the below, instead received \`\\"website\\"\`.
+(music.song, music.album, music.playlist, music.radio_station, video.movie, video.episode, video.tv_show, video.other, article, book, profile, website)",
           "property": "og:type",
           "valid": true,
         },
@@ -98,7 +99,7 @@ Object {
         },
         Object {
           "content": undefined,
-          "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received undefined",
+          "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received \`undefined\`",
           "property": "og:determiner",
           "valid": true,
         },
@@ -177,19 +178,19 @@ Object {
       "validations": Array [
         Object {
           "content": "summary_large_image",
-          "message": "Expected one of (summary, summary_large_image, app, player), received \`summary_large_image\`.",
+          "message": "Expected one of (summary, summary_large_image, app, player), received \`\\"summary_large_image\\"\`.",
           "property": "twitter:card",
           "valid": true,
         },
         Object {
           "content": undefined,
-          "message": "Expected to match /^@.+$|^$/, but received \`undefined\`.",
+          "message": "Expected to match \`/^@.+$|^$/\`, but received \`undefined\`.",
           "property": "twitter:site",
           "valid": true,
         },
         Object {
           "content": "@kevin940726",
-          "message": "Expected to match /^@.+$|^$/, but received \`@kevin940726\`.",
+          "message": "Expected to match \`/^@.+$|^$/\`, but received \`\\"@kevin940726\\"\`.",
           "property": "twitter:creator",
           "valid": true,
         },
@@ -230,9 +231,9 @@ Object {
       "errors": Array [
         Object {
           "content": "Error",
-          "message": "Response status returns 404 when trying to access https://kaihao.dev/apple-app-site-association,
-and returns status 404 when trying to access https://kaihao.dev/.well-known/apple-app-site-association.
-One of the above url should be set up to be accessed.",
+          "message": "Response status returns \`404\` when trying to access \`https://kaihao.dev/apple-app-site-association\`.
+Response status returns \`404\` when trying to access \`https://kaihao.dev/.well-known/apple-app-site-association\`.
+One of the above url should be set up to host the \`apple-app-site-association\` file.",
           "property": "apple-app-site-association",
           "valid": false,
         },
@@ -241,9 +242,9 @@ One of the above url should be set up to be accessed.",
       "validations": Array [
         Object {
           "content": "Error",
-          "message": "Response status returns 404 when trying to access https://kaihao.dev/apple-app-site-association,
-and returns status 404 when trying to access https://kaihao.dev/.well-known/apple-app-site-association.
-One of the above url should be set up to be accessed.",
+          "message": "Response status returns \`404\` when trying to access \`https://kaihao.dev/apple-app-site-association\`.
+Response status returns \`404\` when trying to access \`https://kaihao.dev/.well-known/apple-app-site-association\`.
+One of the above url should be set up to host the \`apple-app-site-association\` file.",
           "property": "apple-app-site-association",
           "valid": false,
         },
@@ -253,7 +254,7 @@ One of the above url should be set up to be accessed.",
       "errors": Array [
         Object {
           "content": "Error",
-          "message": "Response status returns 404 when trying to access https://kaihao.dev/.well-known/assetlinks.json.",
+          "message": "Response status returns \`404\` when trying to access \`https://kaihao.dev/.well-known/assetlinks.json\`.",
           "property": "assetlinks.json",
           "valid": false,
         },
@@ -262,7 +263,7 @@ One of the above url should be set up to be accessed.",
       "validations": Array [
         Object {
           "content": "Error",
-          "message": "Response status returns 404 when trying to access https://kaihao.dev/.well-known/assetlinks.json.",
+          "message": "Response status returns \`404\` when trying to access \`https://kaihao.dev/.well-known/assetlinks.json\`.",
           "property": "assetlinks.json",
           "valid": false,
         },
@@ -289,7 +290,7 @@ One of the above url should be set up to be accessed.",
         },
         Object {
           "content": "I&#x27;m Kai Hao, a front-end developer in Taiwan.",
-          "message": "Expected to match /.+/, but received \`I&#x27;m Kai Hao, a front-end developer in Taiwan.\`.",
+          "message": "Either property of \\"og:description\\" or \\"description\\" is required.",
           "property": "og:description",
           "valid": true,
         },
@@ -299,7 +300,7 @@ One of the above url should be set up to be accessed.",
       "errors": Array [
         Object {
           "content": undefined,
-          "message": "Expected to match /.+/, but received \`undefined\`.",
+          "message": "Expected to match \`/.+/\`, but received \`undefined\`.",
           "property": "al:android:package",
           "valid": false,
         },
@@ -314,7 +315,7 @@ One of the above url should be set up to be accessed.",
         },
         Object {
           "content": undefined,
-          "message": "Expected to match /.+/, but received \`undefined\`.",
+          "message": "Expected to match \`/.+/\`, but received \`undefined\`.",
           "property": "al:android:package",
           "valid": false,
         },
@@ -326,13 +327,13 @@ One of the above url should be set up to be accessed.",
         },
         Object {
           "content": undefined,
-          "message": "Expected to match /^(.+:\\\\/\\\\/.*|)$/, but received \`undefined\`.",
+          "message": "Expected to match \`/^(.+:\\\\/\\\\/.*|)$/\`, but received \`undefined\`.",
           "property": "al:android:url",
           "valid": true,
         },
         Object {
           "content": undefined,
-          "message": "Expected to match /^(true|false|)$/, but received \`undefined\`.",
+          "message": "Expected to match \`/^(true|false|)$/\`, but received \`undefined\`.",
           "property": "al:web:should_fallback",
           "valid": true,
         },
@@ -348,7 +349,7 @@ One of the above url should be set up to be accessed.",
       "errors": Array [
         Object {
           "content": undefined,
-          "message": "Expected to match /^(.+:\\\\/\\\\/.*)$/, but received \`undefined\`.",
+          "message": "Expected to match \`/^(.+:\\\\/\\\\/.*)$/\`, but received \`undefined\`.",
           "property": "al:ios:url",
           "valid": false,
         },
@@ -369,13 +370,13 @@ One of the above url should be set up to be accessed.",
         },
         Object {
           "content": undefined,
-          "message": "Expected to match /^(.+:\\\\/\\\\/.*)$/, but received \`undefined\`.",
+          "message": "Expected to match \`/^(.+:\\\\/\\\\/.*)$/\`, but received \`undefined\`.",
           "property": "al:ios:url",
           "valid": false,
         },
         Object {
           "content": undefined,
-          "message": "Expected to match /^(true|false|)$/, but received \`undefined\`.",
+          "message": "Expected to match \`/^(true|false|)$/\`, but received \`undefined\`.",
           "property": "al:web:should_fallback",
           "valid": true,
         },
@@ -401,19 +402,20 @@ One of the above url should be set up to be accessed.",
       "validations": Array [
         Object {
           "content": "https://kaihao.dev/",
-          "message": "Expected to match /.+/, but received \`https://kaihao.dev/\`.",
+          "message": "Expected url to have 'http' or 'https' protocol, received https:",
           "property": "og:url",
           "valid": true,
         },
         Object {
           "content": "Kai Hao",
-          "message": "Expected to match /.+/, but received \`Kai Hao\`.",
+          "message": "Either \\"og:title\\" property or <title> value is required.",
           "property": "og:title",
           "valid": true,
         },
         Object {
           "content": "website",
-          "message": "Expected to match /^(music\\\\.(song|album|playlist|radio_station)|video\\\\.(movie|episode|tv_show|other)|article|book|profile|website)$/, but received \`website\`.",
+          "message": "\\"og:type\\" should be one of the below, instead received \`\\"website\\"\`.
+(music.song, music.album, music.playlist, music.radio_station, video.movie, video.episode, video.tv_show, video.other, article, book, profile, website)",
           "property": "og:type",
           "valid": true,
         },
@@ -431,7 +433,7 @@ One of the above url should be set up to be accessed.",
         },
         Object {
           "content": undefined,
-          "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received undefined",
+          "message": "Expected determiner to be one of (a, an, the, \\"\\", auto), received \`undefined\`",
           "property": "og:determiner",
           "valid": true,
         },
@@ -510,19 +512,19 @@ One of the above url should be set up to be accessed.",
       "validations": Array [
         Object {
           "content": "summary_large_image",
-          "message": "Expected one of (summary, summary_large_image, app, player), received \`summary_large_image\`.",
+          "message": "Expected one of (summary, summary_large_image, app, player), received \`\\"summary_large_image\\"\`.",
           "property": "twitter:card",
           "valid": true,
         },
         Object {
           "content": undefined,
-          "message": "Expected to match /^@.+$|^$/, but received \`undefined\`.",
+          "message": "Expected to match \`/^@.+$|^$/\`, but received \`undefined\`.",
           "property": "twitter:site",
           "valid": true,
         },
         Object {
           "content": "@kevin940726",
-          "message": "Expected to match /^@.+$|^$/, but received \`@kevin940726\`.",
+          "message": "Expected to match \`/^@.+$|^$/\`, but received \`\\"@kevin940726\\"\`.",
           "property": "twitter:creator",
           "valid": true,
         },

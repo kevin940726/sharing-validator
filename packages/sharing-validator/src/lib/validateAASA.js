@@ -40,9 +40,9 @@ async function validateAASA(url) {
       )
     ]);
   } catch (error) {
-    result.message = `Response status returns ${error.errors[0].status} when trying to access https://${domain}/apple-app-site-association,
-and returns status ${error.errors[1].status} when trying to access https://${domain}/.well-known/apple-app-site-association.
-One of the above url should be set up to be accessed.`;
+    result.message = `Response status returns \`${error.errors[0].status}\` when trying to access \`https://${domain}/apple-app-site-association\`.
+Response status returns \`${error.errors[1].status}\` when trying to access \`https://${domain}/.well-known/apple-app-site-association\`.
+One of the above url should be set up to host the \`apple-app-site-association\` file.`;
     return getResults(result);
   }
 
@@ -71,18 +71,18 @@ ${text}`;
   }
 
   if (!json.applinks) {
-    result.message = `Response JSON should have a 'applinks' key.`;
+    result.message = `Response JSON should have a "applinks" key.`;
     return getResults(result);
   }
 
   if (!json.applinks.details) {
-    result.message = `Response JSON should have a 'applinks.details' key.`;
+    result.message = `Response JSON should have a "applinks.details" key.`;
     return getResults(result);
   }
 
   if (json.applinks.apps.length !== 0) {
-    result.message = `Response JSON 'applinks.apps' should be an empty array, received
-${JSON.stringify(json.applinks.apps, null, 2)}`;
+    result.message = `Response JSON "applinks.apps" should be an empty array, received
+\`${JSON.stringify(json.applinks.apps, null, 2)}\``;
     return getResults(result);
   }
 

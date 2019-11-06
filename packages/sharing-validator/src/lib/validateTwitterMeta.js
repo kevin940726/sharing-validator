@@ -21,7 +21,9 @@ const TWITTER_VALIDATE_PATTERNS = {
 
       return {
         valid: /^(summary|summary_large_image|app|player)$/.test(content),
-        message: `Expected one of (summary, summary_large_image, app, player), received \`${content}\`.`
+        message: `Expected one of (summary, summary_large_image, app, player), received \`${JSON.stringify(
+          content
+        )}\`.`
       };
     },
     site: TWITTER_HANDLE_PATTERN,

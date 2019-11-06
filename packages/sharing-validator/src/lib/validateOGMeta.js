@@ -12,10 +12,57 @@ const VALIDATE_PATTERNS = {
   // https://ogp.me/#metadata
   og: {
     // required
-    url: STRING_PATTERN_REQUIRED,
-    title: STRING_PATTERN_REQUIRED,
+    url: (content, meta, parentKeys, configs) => {
+      if (!content) {
+        return {
+          valid: false,
+          type: "warning",
+          content: configs.url,
+          message:
+            '"og:url" is not set, fallback to the requested url as default value instead'
+        };
+      }
+
+      return URL_PATTERN(content, meta, parentKeys, configs);
+    },
+    title: (content, meta) => {
+      if (!content && meta.title) {
+        return {
+          valid: false,
+          type: "warning",
+          content: meta.title,
+          message:
+            '"og:title" is not set, fallback to the <title> value instead.'
+        };
+      }
+
+      return {
+        valid: !!content,
+        message: `Either "og:title" property or <title> value is required.`
+      };
+    },
     // https://ogp.me/#types
-    type: /^(music\.(song|album|playlist|radio_station)|video\.(movie|episode|tv_show|other)|article|book|profile|website)$/,
+    type: content => {
+      if (!content) {
+        return {
+          valid: false,
+          type: "warning",
+          content: "website",
+          message:
+            '"og:type" is not set, fallback to `"website"` as default value.'
+        };
+      }
+
+      return {
+        valid: /^(music\.(song|album|playlist|radio_station)|video\.(movie|episode|tv_show|other)|article|book|profile|website)$/.test(
+          content
+        ),
+        message: `"og:type" should be one of the below, instead received \`${JSON.stringify(
+          content
+        )}\`.
+(music.song, music.album, music.playlist, music.radio_station, video.movie, video.episode, video.tv_show, video.other, article, book, profile, website)`
+      };
+    },
 
     // optional types
     locale: {
@@ -28,7 +75,9 @@ const VALIDATE_PATTERNS = {
     site_name: STRING_PATTERN,
     determiner: content => ({
       valid: !content || /^(a|an|the|auto|)$/.test(content),
-      message: `Expected determiner to be one of (a, an, the, "", auto), received ${content}`
+      message: `Expected determiner to be one of (a, an, the, "", auto), received \`${JSON.stringify(
+        content
+      )}\``
     }),
     image: {
       pattern: URL_PATTERN,
@@ -86,8 +135,8 @@ const VALIDATE_PATTERNS = {
   }
 };
 
-function validateOGMeta(meta) {
-  return validateMeta(meta, VALIDATE_PATTERNS);
+function validateOGMeta(meta, configs) {
+  return validateMeta(meta, VALIDATE_PATTERNS, configs);
 }
 
 export default validateOGMeta;
