@@ -15,10 +15,16 @@ export const INTEGER_PATTERN = content => ({
 
 export const URL_PATTERN = content => {
   try {
-    const urlData = new URL(content);
+    let url = content;
+    if (url.startsWith("//")) {
+      url = "https:" + url;
+    }
+
+    const urlData = new URL(url);
 
     return {
       valid: urlData.protocol === "http:" || urlData.protocol === "https:",
+      content: url,
       message: `Expected url to have 'http' or 'https' protocol, received ${urlData.protocol}`
     };
   } catch (err) {
