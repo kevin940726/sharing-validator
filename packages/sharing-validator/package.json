@@ -16,7 +16,7 @@
     "chalk": "^2.4.2",
     "htmlparser2": "^4.0.0",
     "meow": "^5.0.0",
-    "node-fetch": "^2.6.0",
+    "node-fetch": "^2.6.1",
     "promise.any": "^2.0.0"
   },
   "devDependencies": {
